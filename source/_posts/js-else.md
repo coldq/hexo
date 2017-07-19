@@ -2,6 +2,7 @@
 title: Js的小技巧
 date: 2017-03-29 13:49:07
 tags: javascript
+categories: javascript
 ---
 
 ## Js的小技巧
@@ -30,7 +31,7 @@ js在"预编译"阶段, 会解释函数声明, 但却会忽略表式.
 另外， 函数转换为表达式的方法并不一定要靠分组操作符()，我们还可以用void操作符，~操作符，!操作符,,+,-等一元操作符
 如：
 
-```
+```javascript
 !function(){ 
 alert("另类的匿名函数自执行"); 
 }();
@@ -40,7 +41,7 @@ alert("另类的匿名函数自执行");
 
 #### instanceof 判断
 
-```
+```javascript
 var ary = [1,23,4];
 console.log(ary instanceof Array)//true;
 ```
@@ -49,7 +50,7 @@ console.log(ary instanceof Array)//true;
 
 #### 原型链方法
 
-```
+```javascript
 var ary = [1,23,4];
 console.log(ary.__proto__.constructor==Array);//true
 console.log(ary.constructor==Array)//true 这两段代码是一样的
@@ -68,7 +69,7 @@ instanceof 和constructor 判断的变量，必须在当前页面声明的，比
 
 #### 通用的方法
 
-```
+```javascript
 var ary = [1,23,4];
 function isArray(o){
 return Object.prototype.toString.call(o)=='[object Array]';
@@ -82,14 +83,14 @@ Object.getOwnPropertyNames(obj)或Object.keys(obj)返回一个数组，该数组
 
 所以可以用下面方法判断obj是否为空：
 
-```
+```javascript
 Object.getOwnPropertyNames(obj).length === 0 
 Object.keys(obj).length === 0
 ```
 
 注意用`for i in obj `会返回原型链上的属性
 
-```
+```javascript
 function Foo(){
 }
 Foo.prototype.a = 1;
@@ -111,7 +112,7 @@ for(var i in foo){
 ```
 
 其它方法：
-```
+```javascript
 JSON.stringify(obj) === '{}'
 ```
 
@@ -129,6 +130,7 @@ var bar = ~~(12.4 / 4.13);//结果为3
 
 ### 变量交换
 
-```
+```javascript
 let a=1, b=2;
 [a,b] = [b,a]// a:2,b:1
+```

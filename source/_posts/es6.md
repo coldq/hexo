@@ -1,7 +1,10 @@
 ---
 title: ES6相关知识记录
 date: 2017-03-28 17:24:22
-tags: ES6
+tags: 
+  - javascript
+  - ES6 
+categories: javascript
 ---
 
 ## ES6相关知识记录
@@ -11,7 +14,7 @@ tags: ES6
 #### 展开运算符
 展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。
 
-```
+```javascript
 let arr = [2,3,4]
 console.log([1,...arr,5]);//[1,2,3,4,5]
 
@@ -33,14 +36,14 @@ otherSeasons      // => ['winter']
 
 ES6引入了一种新型的字符串字面量语法，我们称之为模板字符串（template strings）。除了使用反撇号字符 ` 代替普通字符串的引号 ' 或 " 外，它们看起来与普通字符串并无二致。在最简单的情况下，它们与普通字符串的表现一致：
 
-```
+```javascript
 let str = `Ceci n'est pas une chaîne.`;
 typeof str //"string"
 ```
 
 它为JavaScript提供了简单的字符串插值功能，从此以后，你可以通过一种更加美观、更加方便的方式向字符串中插值了。
 
-```
+```javascript
 let name = 'Tom';
 console.log(`my name is ${name}`);//my name is Tom
 ```
@@ -57,7 +60,7 @@ console.log(`my name is ${name}`);//my name is Tom
 
 与普通字符串不同的是，模板字符串可以多行书写：
 
-```
+```javascript
 let s = `ww
 ee
 rr`
@@ -83,7 +86,7 @@ ES5中最原始的变量声明，用于声明变量，其实JavaScript是弱类�
 ##### 1.作用域
 
 使用var声明的变量的作用域是函数作用域（在ES5时代，只有函数作用域和全局作用域两种作用域），在一个函数内用var声明的变量，则只在这个函数内有效。
-```
+```javascript
 function test(){
     var a;
     console.log(a);//undefined
@@ -94,7 +97,7 @@ console.log(a);//ReferenceError: a is not defined
 ##### 2.变量声明提升
 
 用var声明变量时，只要在一个函数作用域内，无论在什么地方声明变量，都会把变量的声明提升到函数作用域的最前头，所以无论使用变量在变量声明前还是声明后，都不会报错（当然只是声明提前，赋值并没有提前，所以如果使用在声明之前，会输出undefined，但不会报错）。
-```
+```javascript
 function test(){
     console.log(a);//undefined
     var a=3;
@@ -104,7 +107,7 @@ function test(){
 ##### 隐式声明
 
 当没有声明，直接给变量赋值时，会隐式地给变量声明，此时这个变量作为全局变量存在。
-```
+```javascript
 function test(){
     a=3;
     console.log(a);//3
@@ -113,7 +116,7 @@ test();
 console.log(a);//3
 ```
 当然要注意，隐式声明的话就没有变量声明提前的功能了，所以下面的使用是会报错的。
-```
+```javascript
 function test(){
     console.log(a);//ReferenceError: a is not defined
     a=3;
@@ -124,7 +127,7 @@ function test(){
 
 用function声明的是函数对象，作用域与var一样，是函数作用域。
 
-```
+```javascript
 function test(){
     function a(){
         console.log('d');
@@ -136,7 +139,7 @@ a();//ReferenceError: a is not defined
 
 同样，function声明也有变量声明提升，下面是两个特殊的例子：
 
-```
+```javascript
 function hello1(a){
        console.log(a); //[Function: a]
     function a(){}
@@ -154,7 +157,7 @@ hello2('test');
 
 这里有涉及到函数中形参的声明，我们可以将以上两个例子看成：
 
-```
+```javascript
 function hello1(a){
     var a='test；
        console.log(a); //[Function: a]

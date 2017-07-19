@@ -1,7 +1,10 @@
 ---
 title: javascript中this技巧
 date: 2017-03-18 22:52:26
-tags: javascript
+tags: 
+  - javascript
+  - this
+categories: javascript
 ---
 
 
@@ -12,7 +15,7 @@ tags: javascript
 
 首先介绍的是函数调用类型：独立函数调用，在没有其他应用下的默认规则。这时候this指向了window。
 
-```
+```javascript
 function foo(){
   var a = 2;
   function bar(){
@@ -25,7 +28,7 @@ foo();// undefined
 
 这段代码中,foo函数中的bar函数运行时，由于默认绑定，this指向window，a未定义导致输出为undefined。下面代码中foo函数输出0，印证了这一点。
 
-```
+```javascript
 var a = 0;
 function foo(){
   var a = 2;
@@ -41,7 +44,7 @@ foo();// 0
 
 另一条规则是调用的位置是否有上下文对象，或者说是否被某个对象拥有或者包含，不过这种说法可能会造成一些误导。
 
-```
+```javascript
 function foo(){
     console.log(this.a);
 }
@@ -66,7 +69,7 @@ objContainer.obj.foo();//2
 
 ### 3. 隐式丢失
 
-```
+```javascript
 function foo(){
     console.log(this.a);
 }
@@ -82,7 +85,7 @@ bar ();//suprise
 ```
 这种情况中，bar函数输出的是"suprise"，this改变了，obj中的a变量丢失了。
 
-```
+```javascript
 function foo(){
     console.log(this.a);
 }
@@ -106,7 +109,7 @@ foo函数被doFoo调用，obj中的a变量丢失。
 
 事实上，个人这种情况和默认绑定有类似，当一个函数独立被调用，而不是被一个对象调用，this都指向了window。
 
-```
+```javascript
 function foo(){
     console.log(this);
 }
@@ -123,7 +126,7 @@ doFoo(obj.foo)//Window{...}
 
 学bind()\apply()\call()函数，接收的第一个参数即是上下文对象并将其赋给this。
 
-```
+```javascript
 function foo(){
     console.log(this.a);
 }

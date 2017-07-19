@@ -1,7 +1,10 @@
 ---
 title: javascript中bind
 date: 2017-03-21 20:55:36
-tags: javascript
+tags: 
+  - javascript
+  - bind 
+categories: javascript
 ---
 
 ## bind
@@ -36,7 +39,7 @@ bind() 函数会创建一个新函数（称为绑定函数），新函数与被�
 
 bind() 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 this 值。JavaScript新手经常犯的一个错误是将一个方法从对象中拿出来，然后再调用，希望方法中的 this 是原来的对象。（比如在回调中传入这个方法。）如果不做特殊处理的话，一般会丢失原来的对象。从原来的函数和原来的对象创建一个绑定函数，则能很漂亮地解决这个问题：
 
-```
+```javascript
 this.x = 9; 
 var module = {
   x: 81,
@@ -58,7 +61,7 @@ boundGetX(); // 返回 81
 
 bind()的另一个最简单的用法是使一个函数拥有预设的初始参数。这些参数（如果有的话）作为bind()的第二个参数跟在this（或其他对象）后面，之后它们会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们的后面。
 
-```
+```javascript
 function list() {
   return Array.prototype.slice.call(arguments);
 }
@@ -101,7 +104,7 @@ flower.bloom();  // 一秒钟后, 调用'declare'方法
 
 自然而然地，绑定函数适用于用new操作符 new 去构造一个由目标函数创建的新的实例。当一个绑定函数是用来构建一个值的，原来提供的 this 就会被忽略。然而, 原先提供的那些参数仍然会被前置到构造函数调用的前面。
 
-```
+```javascript
 function Point(x, y) {
   this.x = x;
   this.y = y;
@@ -182,7 +185,7 @@ str([]) //'[object Array]'
 
 bind 函数在 ECMA-262 第五版才被加入；它可能无法在所有浏览器上运行。你可以部份地在脚本开头加入以下代码，就能使它运作，让不支持的浏览器也能使用 bind() 功能。
 
-```
+```javascript
 if (!Function.prototype.bind) {
   Function.prototype.bind = function (oThis) {
     if (typeof this !== "function") {
