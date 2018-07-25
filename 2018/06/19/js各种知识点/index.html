@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/hexo/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexo/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/hexo/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexo/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
+<meta name="keywords" content="-javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="又是杂记">
+<meta property="og:url" content="https://coldq.github.io/hexo/2018/06/19/js各种知识点/index.html">
+<meta property="og:site_name" content="ColdQ的个人博客">
+<meta property="og:description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-07-25T12:52:08.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="又是杂记">
+<meta name="twitter:description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
+
+
+
+
+
+
+  <link rel="canonical" href="https://coldq.github.io/hexo/2018/06/19/js各种知识点/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>又是杂记 | ColdQ的个人博客</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122887485-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122887485-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexo/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ColdQ的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">欲说还休，却道天凉好个秋。</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/hexo/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/hexo/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/hexo/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/hexo/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/06/19/js各种知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">又是杂记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-19 14:49:07" itemprop="dateCreated datePublished" datetime="2018-06-19T14:49:07+08:00">2018-06-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-25 20:52:08" itemprop="dateModified" datetime="2018-07-25T20:52:08+08:00">2018-07-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/杂记/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="w3c-制定的-javascript-标准事件模型"><a href="#w3c-制定的-javascript-标准事件模型" class="headerlink" title="w3c 制定的 javascript 标准事件模型"></a>w3c 制定的 javascript 标准事件模型</h3><h4 id="触发顺序"><a href="#触发顺序" class="headerlink" title="触发顺序"></a>触发顺序</h4><p>事件捕获-&gt;事件处理-&gt;事件冒泡</p>
+<h4 id="绑定方法："><a href="#绑定方法：" class="headerlink" title="绑定方法："></a>绑定方法：</h4><ol>
+<li>直接Dom绑定</li>
+<li>js的onXXX绑定</li>
+<li>添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本<pre><code>attachEvent(eventName,Handle) (IE9.0以下版本)
+</code></pre></li>
+</ol>
+<h4 id="图片服务器几个原因："><a href="#图片服务器几个原因：" class="headerlink" title="图片服务器几个原因："></a>图片服务器几个原因：</h4><p>1、负载均衡，减少本服务器负担，降低运行成本。<br>2、通过专业服务器和加速技术，实现图片访问加速。<br>3、防止图片上传携带病毒感染主网站服务器。<br>4、减少并发数限制。把图片存储在多台静态服务器，减少http请求数 IIS 链接数 ，保证更多的用户能同时并更快的打开页面。<br>5、将图片等非主要信息外放并限制搜索引擎跟踪，有利于搜索引擎收录主体内容，促进网站排名</p>
+<a id="more"></a>
+<h3 id="何时应该使用etag-何时应该使用last-modified"><a href="#何时应该使用etag-何时应该使用last-modified" class="headerlink" title="何时应该使用etag? 何时应该使用last-modified?"></a>何时应该使用etag? 何时应该使用last-modified?</h3><ul>
+<li>如获取最后修改时间代价太高 (如不经常变动的动态内容), 使用etag, 然后用哈希或crc算法返回校验值；</li>
+<li>如很容易最后修改时间 (如图片/js/css ), 那么毫无疑问返回最后修改时间将是消耗最小的。</li>
+<li>两个都返回也是可以的.</li>
+<li>Etag 算法由服务器自己决定，可以是md5，可以是时间，它比 last-modified(只有秒级） 更精确。</li>
+<li>分布式系统里多台机器间文件的last-modified必须保持一致，以免负载均衡到不同机器导致比对失败</li>
+<li>分布式系统尽量关闭掉Etag(每台机器生成的etag都会不一样)</li>
+</ul>
+<h3 id="Last-Modified-Etag-Expire-混合"><a href="#Last-Modified-Etag-Expire-混合" class="headerlink" title="Last-Modified,Etag,Expire 混合"></a>Last-Modified,Etag,Expire 混合</h3><ul>
+<li>通常 Last-Modified,Etag,Expire 是一起混合使用的，特别是 Last-Modified 和 Expire 经常一起使用，因为 Expire 可以让浏览器完全不发起 Http 请求，而当浏览器强制 F5 的时候又有 Last-Modified ，这样就很好的达到了浏览器段缓存的效果。</li>
+<li>Etag 和 Expire 一起使用时，先判断 Expire ，如果已经过期，再发起 Http 请求，如果 Etag 也过期，则返回 200 响应。如果 Etag 没有过期则返回 304 响应。</li>
+<li>Last-Modified,Etag,Expires 三个同时使用时。先判断 Expire ，然后发送 Http 请求，服务器先判断 last-modified ，再判断 Etag ，必须都没有过期，才能返回 304 响应。</li>
+</ul>
+<h4 id="addEventListener-的-useCaptrue"><a href="#addEventListener-的-useCaptrue" class="headerlink" title="addEventListener 的 useCaptrue"></a>addEventListener 的 useCaptrue</h4><ul>
+<li>fasle 默认值，目标接收冒泡，忽略捕获</li>
+<li>true 目标接收捕获</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outDiv = <span class="built_in">document</span>.getElementById(<span class="string">"outDiv"</span>);</span><br><span class="line"><span class="keyword">var</span> middleDiv = <span class="built_in">document</span>.getElementById(<span class="string">"middleDiv"</span>);</span><br><span class="line"><span class="keyword">var</span> inDiv = <span class="built_in">document</span>.getElementById(<span class="string">"inDiv"</span>);</span><br><span class="line"><span class="keyword">var</span> info = <span class="built_in">document</span>.getElementById(<span class="string">"info"</span>);</span><br><span class="line">outDiv.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; info.innerHTML += <span class="string">"outDiv"</span> + <span class="string">"&lt;br&gt;"</span>; &#125;, <span class="literal">false</span>);</span><br><span class="line">middleDiv.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; info.innerHTML += <span class="string">"middleDiv"</span> + <span class="string">"&lt;br&gt;"</span>; &#125;, <span class="literal">false</span>);</span><br><span class="line">inDiv.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; info.innerHTML += <span class="string">"inDiv"</span> + <span class="string">"&lt;br&gt;"</span>; &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>全为 false 时，触发顺序为：inDiv、middleDiv、outDiv；</li>
+<li>全为 true 时，触发顺序为：outDiv、middleDiv、inDiv；</li>
+<li>outDiv 为 true，其他为 false 时，触发顺序为：outDiv、inDiv、middleDiv；</li>
+<li>middleDiv 为 true，其他为 false 时，触发顺序为：middleDiv、inDiv、outDiv；</li>
+</ul>
+<h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Events" target="_blank" rel="noopener">MDN event</a></p>
+<ul>
+<li>资源事件(资源加载)</li>
+<li>网络事件(online offline)</li>
+<li>焦点事件(focus blur) 不会冒泡</li>
+<li>Websocket事件</li>
+<li>视图事件(resize scroll)</li>
+<li>鼠标事件</li>
+<li>键盘事件(keydown 、keypress)</li>
+<li>拖放事件</li>
+<li>传感器事件 (手机端可以较好利用，deviceorientation方向传感器，devicemotion加速度)</li>
+</ul>
+<h3 id="在-javascript-中，用于阻止默认事件的默认操作的方法是"><a href="#在-javascript-中，用于阻止默认事件的默认操作的方法是" class="headerlink" title="在 javascript 中，用于阻止默认事件的默认操作的方法是"></a>在 javascript 中，用于阻止默认事件的默认操作的方法是</h3><p>w3c的方法是e.preventDefault()，IE则是使用e.returnValue = false;</p>
+<h3 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h3><ol>
+<li>词法作用域 ： 创建内部变量不能被随意改变，同时又可以用指定的函数接口来操作；</li>
+<li>把代码封装成闭包形式，时机成熟时再使用，比如实现柯里化和反柯里化</li>
+<li>闭包可以给对象设置私有属性并利用特权(Privileged)方法访问私有属性。</li>
+<li>面向对象，封装。</li>
+</ol>
+<h3 id="变量对象、活动对象"><a href="#变量对象、活动对象" class="headerlink" title="变量对象、活动对象"></a>变量对象、活动对象</h3><p>变量对象：包含函数中的所有函数和变量</p>
+<p>变量对象有多个，其中有活动对象，活动对象就是作用域链上正在被执行和引用的变量对象。</p>
+<h3 id="react-router原理"><a href="#react-router原理" class="headerlink" title="react-router原理"></a>react-router原理</h3><p><a href="https://github.com/joeyguo/blog/issues/2" target="_blank" rel="noopener">参考</a><br>可以将 react-router 的整个包装闭环总结为</p>
+<ul>
+<li>回调函数：含有能够更新 react UI 的 react setState 方法。</li>
+<li>注册回调：在 Router componentWillMount 中使用 history.listen 注册的回调函数，最终放在 history 模块的 回调函数数组 changeListeners 中。</li>
+<li>触发回调：Link 点击触发 history 中回调函数数组 changeListeners 的执行，从而触发原来 listen 中的 setState 方法，更新了页面</li>
+</ul>
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><ol>
+<li><p>js中for in 可以遍历对象或数组的显性属性，也就是说我们自己定义的属性是可以遍历的，那些原型上默认已有的属性，例如：Object.prototype.toString、Object.prototype.hasOwnProperty 是遍历不出来的。</p>
+</li>
+<li><p>for in循环出的值不一定是按顺序的。</p>
+</li>
+<li><p>在原型上加扩展方法，会被for in 出来。</p>
+</li>
+</ol>
+<h3 id="JavaScript-数据类型"><a href="#JavaScript-数据类型" class="headerlink" title="JavaScript 数据类型"></a>JavaScript 数据类型</h3><p>字符串、数字、布尔、数组、对象、Null、Undefined、Symbol</p>
+<h3 id="web-worker"><a href="#web-worker" class="headerlink" title="web worker"></a>web worker</h3><p>web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w=<span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="减少重绘（repaint）和重排（reflow）-网页性能优化"><a href="#减少重绘（repaint）和重排（reflow）-网页性能优化" class="headerlink" title="减少重绘（repaint）和重排（reflow） [网页性能优化]"></a>减少重绘（repaint）和重排（reflow） [网页性能优化]</h3><p>提高网页性能，就是要降低”重排”和”重绘”的频率和成本，尽量少触发重新渲染。</p>
+<ol>
+<li>Dom 读写操作分离</li>
+<li>样式统一改变：不要一条条地改变样式，而要通过改变class，或者csstext属性，一次性地改变样式。</li>
+<li>Document Fragment ： 尽量使用离线DOM，而不是真实的网面DOM，来改变元素样式。EG:操作Document Fragment对象;使用 cloneNode() 方法，在克隆的节点上进行操作，然后再用克隆的节点替换原始节点。</li>
+<li>先将元素设为display: none;</li>
+<li>使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染。</li>
+</ol>
+<p><a href="http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="noopener">网页性能优化</a></p>
+<p>###　window.requestAnimationFrame() 方法</p>
+<p> 方法告诉浏览器您希望执行动画，并请求浏览器调用指定的函数在下一次重绘之前更新动画。该方法将在重绘之前调用的回调作为参数。</p>
+<p> 如果你想做逐帧动画的时候，你应该用这个方法。这就要求你的动画函数执行会先于浏览器重绘动作。通常来说，被调用的频率是每秒60次，但是一般会遵循W3C标准规定的频率。如果是后台标签页面，重绘频率则会大大降低。</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requestID = window.requestAnimationFrame(callback);               // Firefox 23 / IE10 / Chrome / Safari 7 (incl. iOS)</span><br><span class="line">requestID = window.mozRequestAnimationFrame(callback);                // Firefox &lt; 23</span><br><span class="line">requestID = window.webkitRequestAnimationFrame(callback); // Older versions Chrome/Webkit</span><br></pre></td></tr></table></figure>
+<h4 id="参数Edit"><a href="#参数Edit" class="headerlink" title="参数Edit"></a>参数Edit</h4><ul>
+<li>callback<br>在每次需要重新绘制动画时,会调用这个参数所指定的函数。这个回调函数会收到一个参数，这个 DOMHighResTimeStamp 类型的参数指示当前时间距离开始触发 requestAnimationFrame 的回调的时间。</li>
+</ul>
+<h3 id="window-requestIdleCallback"><a href="#window-requestIdleCallback" class="headerlink" title="window.requestIdleCallback()"></a>window.requestIdleCallback()</h3><p>window.requestIdleCallback() 会在浏览器空闲时期依次调用函数， 这就可以让开发者在主事件循环中执行后台或低优先级的任务，而且不会对像动画和用户交互这样延迟触发而且关键的事件产生影响。函数一般会按先进先调用的顺序执行，除非函数在浏览器调用它之前就到了它的超时时间。</p>
+<blockquote>
+<p><code>var handle = window.requestIdleCallback(callback[, options])</code><br>返回值<br>一个无符号长整数，可以用它来结束回调，使用 Window.cancelIdleCallback() 方法.</p>
+</blockquote>
+<p>参数<br><code>callback</code><br>一个即将被调用的函数的引用。函数会接收到一个名为 deadline 的参数，它具有如下属性 :</p>
+<ul>
+<li><p>timeRemaining： 一个返回 <code>DOMHighResTimeStamp</code> 的函数的引用。(DOMHighResTimeStamp 是一个double类型，用于存储时间值。该值可以是离散的时间点或两个离散时间点之间的时间差。T单位为毫秒 ms (milliseconds) ，应准确至5微秒 µs )</p>
+</li>
+<li><p>didTimeout： 布尔型，如果 callback 在空闲时间被客户端执行，它的值为 false，其他情况它的值为 true (例如：options 中给了超时时间，二期在超时过期时仍没有足够的空闲时间)。</p>
+</li>
+<li><p>options 可选<br>包括可选的配置参数。具有如下属性：<br>timeout：浏览器调用 callback 的最后期限。它的单位是毫秒。</p>
+</li>
+</ul>
+<h3 id="AMD-CMD"><a href="#AMD-CMD" class="headerlink" title="AMD CMD"></a>AMD CMD</h3><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。类似的还有 CommonJS Modules/2.0 规范，是 BravoJS 在推广过程中对模块定义的规范化产出。还有不少⋯⋯</p>
+<p>这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的。目前这些规范的实现都能达成浏览器端模块化开发的目的。</p>
+<p>区别：</p>
+<ol>
+<li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.</li>
+<li>CMD 推崇依赖就近，AMD 推崇依赖前置。看代码：</li>
+</ol>
+<p>CMD<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123; </span><br><span class="line">    var a = require(&apos;./a&apos;)  </span><br><span class="line">    a.doSomething()  </span><br><span class="line">    // 此处略去 100 行  </span><br><span class="line">    var b = require(&apos;./b&apos;) // 依赖可以就近书写  </span><br><span class="line">     b.doSomething()   </span><br><span class="line">     // ...</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>AMD 默认推荐的是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([&apos;./a&apos;, &apos;./b&apos;], function(a, b) &#123;  // 依赖必须一开始就写好  </span><br><span class="line">    a.doSomething()   </span><br><span class="line">    // 此处略去 100 行  </span><br><span class="line">    b.doSomething()    </span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写法。</p>
+<ol start="3">
+<li>AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。</li>
+<li>还有一些细节差异，具体看这个规范的定义就好，就不多说了。另外，SeaJS 和 RequireJS 的差异，可以参考:<a href="https://github.com/seajs/seajs/issues/277" target="_blank" rel="noopener">https://github.com/seajs/seajs/issues/277</a></li>
+</ol>
+<h3 id="柯里化：提高函数复用，绑定固定参数"><a href="#柯里化：提高函数复用，绑定固定参数" class="headerlink" title="柯里化：提高函数复用，绑定固定参数"></a>柯里化：提高函数复用，绑定固定参数</h3><p>js柯里化是逐步传参，逐步缩小函数的适用范围，逐步求解的过程。<br><a href="http://www.haorooms.com/post/js_currying" target="_blank" rel="noopener">JavaScript的函数currying 柯里化</a></p>
+<p>反柯里化是 函数的借用，是函数能够接受处理其他对象，通过借用泛化、扩大了函数的使用范围。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexo/tags/javascript/" rel="tag"># -javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo/2018/06/02/leetcode_contest43/" rel="next" title="LeetCode Contest 43">
+                <i class="fa fa-chevron-left"></i> LeetCode Contest 43
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexo/2018/06/24/css模块化组件化/" rel="prev" title="css 组件化、模块化">
+                css 组件化、模块化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4"
+                alt="ColdQ" />
+            
+              <p class="site-author-name" itemprop="name">ColdQ</p>
+              <p class="site-description motion-element" itemprop="description">悠哉的生活。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/hexo/archives/">
+                
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/hexo/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/hexo/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/coldQ" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:llxlovecc@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#w3c-制定的-javascript-标准事件模型"><span class="nav-number">1.</span> <span class="nav-text">w3c 制定的 javascript 标准事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发顺序"><span class="nav-number">1.1.</span> <span class="nav-text">触发顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定方法："><span class="nav-number">1.2.</span> <span class="nav-text">绑定方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片服务器几个原因："><span class="nav-number">1.3.</span> <span class="nav-text">图片服务器几个原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何时应该使用etag-何时应该使用last-modified"><span class="nav-number">2.</span> <span class="nav-text">何时应该使用etag? 何时应该使用last-modified?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Modified-Etag-Expire-混合"><span class="nav-number">3.</span> <span class="nav-text">Last-Modified,Etag,Expire 混合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#addEventListener-的-useCaptrue"><span class="nav-number">3.1.</span> <span class="nav-text">addEventListener 的 useCaptrue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件类型"><span class="nav-number">3.2.</span> <span class="nav-text">事件类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-javascript-中，用于阻止默认事件的默认操作的方法是"><span class="nav-number">4.</span> <span class="nav-text">在 javascript 中，用于阻止默认事件的默认操作的方法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的应用"><span class="nav-number">5.</span> <span class="nav-text">闭包的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象、活动对象"><span class="nav-number">6.</span> <span class="nav-text">变量对象、活动对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router原理"><span class="nav-number">7.</span> <span class="nav-text">react-router原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">8.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-数据类型"><span class="nav-number">9.</span> <span class="nav-text">JavaScript 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-worker"><span class="nav-number">10.</span> <span class="nav-text">web worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少重绘（repaint）和重排（reflow）-网页性能优化"><span class="nav-number">11.</span> <span class="nav-text">减少重绘（repaint）和重排（reflow） [网页性能优化]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">11.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数Edit"><span class="nav-number">11.2.</span> <span class="nav-text">参数Edit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-requestIdleCallback"><span class="nav-number">12.</span> <span class="nav-text">window.requestIdleCallback()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-CMD"><span class="nav-number">13.</span> <span class="nav-text">AMD CMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化：提高函数复用，绑定固定参数"><span class="nav-number">14.</span> <span class="nav-text">柯里化：提高函数复用，绑定固定参数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ColdQ</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/hexo/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexo/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/hexo/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexo/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
