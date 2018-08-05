@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
-<meta name="keywords" content="javascript,ES6">
+<meta name="keywords" content="Javascript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6相关知识记录">
 <meta property="og:url" content="https://coldq.github.io/hexo/2017/03/28/es6/index.html">
 <meta property="og:site_name" content="ColdQ的个人博客">
 <meta property="og:description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-25T12:50:10.075Z">
+<meta property="og:updated_time" content="2018-07-26T05:57:20.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6相关知识记录">
 <meta name="twitter:description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:50:10" itemprop="dateModified" datetime="2018-07-25T20:50:10+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 13:57:20" itemprop="dateModified" datetime="2018-07-26T13:57:20+08:00">2018-07-26</time>
               
             
           </span>
@@ -417,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -509,12 +509,12 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;  </span><br><span class="line">&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(a);<span class="comment">//ReferenceError</span></span><br><span class="line">  <span class="keyword">let</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="4-不允许重复声明"><a href="#4-不允许重复声明" class="headerlink" title="4.不允许重复声明"></a>4.不允许重复声明</h4><p>在相同的作用域内，用let声明变量时，只允许声明一遍。 （var是可以多次声明的）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 报错，Duplicate declaration "a"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 报错,Duplicate declaration "a"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>ES6采用import来代替node等的require来导入模块。</p>
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>ES6采用import来代替node等的require来导入模块。</p>
 <p><code>import {$} from &#39;./jquery.js&#39;</code><br>$对象就是jquery中export暴露的对象。</p>
 <p>import命令接受一个对象（用大括号表示），里面指定要从其他模块导入的变量名。注意：大括号里面的变量名，必须与被导入模块对外接口的名称相同。</p>
 <p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
 <p><code>import { New as $ } from &#39;./jquery.js&#39;;</code><br><strong>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</strong></p>
-<h4 id="class"><a href="#class" class="headerlink" title="class"></a>class</h4><p>ES6引入了类的概念，有了class这个关键字，当然，类只是基于原型的面向对象模式的语法糖，为了方便理解和开发而已，类的实质还是函数对象，类中的方法和对象其实都是挂在对应的函数对象的prototype属性下。</p>
+<h3 id="class"><a href="#class" class="headerlink" title="class"></a>class</h3><p>ES6引入了类的概念，有了class这个关键字，当然，类只是基于原型的面向对象模式的语法糖，为了方便理解和开发而已，类的实质还是函数对象，类中的方法和对象其实都是挂在对应的函数对象的prototype属性下。</p>
 <p>我们定义一个类：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  setSex(_sex) &#123;</span><br><span class="line">        <span class="keyword">this</span>.sex=_sex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>constructor方法，就是构造方法，也就是ES5时代函数对象的主体，而this关键字则代表实例对象，将上述类改写成ES5格式就是：</p>
@@ -530,19 +530,18 @@
 <p>相当于</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>5.Class其实就是一个function，但是有一点不同，Class不存在变量提升，也就是说Class声明定义必须在使用之前。</p>
-<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>全局对象是最顶层的对象，在浏览器环境指的是window对象，在Node.js指的是global对象。</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>全局对象是最顶层的对象，在浏览器环境指的是window对象，在Node.js指的是global对象。</p>
 <p>ES5之中，全局对象的属性与全局变量是等价的，隐式声明或者在全局环境下声明的变量是挂在全局对象上的。</p>
 <p>ES6规定，var命令，function命令以及隐式声明的全局变量，依旧是全局对象的属性；而let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.b) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<h4 id="函数的形参"><a href="#函数的形参" class="headerlink" title="函数的形参"></a>函数的形参</h4><p>函数的形参，隐藏着在函数一开始声明了这些形参对应的变量。</p>
+<h3 id="函数的形参"><a href="#函数的形参" class="headerlink" title="函数的形参"></a>函数的形参</h3><p>函数的形参，隐藏着在函数一开始声明了这些形参对应的变量。</p>
 <p><code>function a(x,y){}</code></p>
 <p>可以看成  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    var x=arguments.length &lt;= 0 || arguments[0] === undefined ? undefined : arguments[0];</span><br><span class="line">    var y=arguments.length &lt;= 1 || arguments[1] === undefined ? undefined : arguments[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x=<span class="built_in">arguments</span>.length &lt;= <span class="number">0</span> || <span class="built_in">arguments</span>[<span class="number">0</span>] === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> y=<span class="built_in">arguments</span>.length &lt;= <span class="number">1</span> || <span class="built_in">arguments</span>[<span class="number">1</span>] === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : <span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当然在ES6下默认声明就是用的let了，所以函数a变成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    let x=arguments.length &lt;= 0 || arguments[0] === undefined ? undefined : arguments[0];</span><br><span class="line">    let y=arguments.length &lt;= 1 || arguments[1] === undefined ? undefined : arguments[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> x=<span class="built_in">arguments</span>.length &lt;= <span class="number">0</span> || <span class="built_in">arguments</span>[<span class="number">0</span>] === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">let</span> y=<span class="built_in">arguments</span>.length &lt;= <span class="number">1</span> || <span class="built_in">arguments</span>[<span class="number">1</span>] === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : <span class="built_in">arguments</span>[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以在ES6中会有以下几个问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function a(x = y, y = 2) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a(); // 报错，给X赋值时y还未被let声明。</span><br></pre></td></tr></table></figure>
-<p>function a(x，y) {<br>  let x;//相当于重复声明，报错。<br>}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x = y, y = <span class="number">2</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a(); <span class="comment">// 报错，给X赋值时y还未被let声明。  </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x，y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> x;<span class="comment">//相当于重复声明，报错。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -563,7 +562,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/hexo/tags/Javascript/" rel="tag"># Javascript</a>
           
             <a href="/hexo/tags/ES6/" rel="tag"># ES6</a>
           
@@ -689,8 +688,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -752,7 +749,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -802,7 +801,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6相关知识记录"><span class="nav-number">1.</span> <span class="nav-text">ES6相关知识记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#展开运算符"><span class="nav-number">1.1.</span> <span class="nav-text">展开运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.2.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6定义方式"><span class="nav-number">1.3.</span> <span class="nav-text">ES6定义方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.3.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-作用域"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量声明提升"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.变量声明提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式声明"><span class="nav-number">1.3.4.</span> <span class="nav-text">隐式声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.3.5.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.3.6.</span> <span class="nav-text">let</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-作用域不同"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">1.作用域不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-不存在变量声明提升"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">2.不存在变量声明提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-暂时性死区"><span class="nav-number">1.3.6.3.</span> <span class="nav-text">3.暂时性死区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-不允许重复声明"><span class="nav-number">1.3.6.4.</span> <span class="nav-text">4.不允许重复声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">1.3.6.5.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class"><span class="nav-number">1.3.6.6.</span> <span class="nav-text">class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局变量"><span class="nav-number">1.3.6.7.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的形参"><span class="nav-number">1.3.6.8.</span> <span class="nav-text">函数的形参</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6相关知识记录"><span class="nav-number">1.</span> <span class="nav-text">ES6相关知识记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#展开运算符"><span class="nav-number">1.1.</span> <span class="nav-text">展开运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.2.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6定义方式"><span class="nav-number">1.3.</span> <span class="nav-text">ES6定义方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.3.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-作用域"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量声明提升"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.变量声明提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式声明"><span class="nav-number">1.3.4.</span> <span class="nav-text">隐式声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.3.5.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.3.6.</span> <span class="nav-text">let</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-作用域不同"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">1.作用域不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-不存在变量声明提升"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">2.不存在变量声明提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-暂时性死区"><span class="nav-number">1.3.6.3.</span> <span class="nav-text">3.暂时性死区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-不允许重复声明"><span class="nav-number">1.3.6.4.</span> <span class="nav-text">4.不允许重复声明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import"><span class="nav-number">1.3.7.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class"><span class="nav-number">1.3.8.</span> <span class="nav-text">class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量"><span class="nav-number">1.3.9.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的形参"><span class="nav-number">1.3.10.</span> <span class="nav-text">函数的形参</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -822,7 +821,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -893,6 +892,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -916,6 +918,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

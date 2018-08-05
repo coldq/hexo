@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="理解setTimeout、setImmediate、process.nextTick的区别  setTimeout 注册的回调会在事件循环的 timers、poll 和closing callbacks阶段执行。需要注意的是，计时器默认定义的 TIMEOUT_MAX 的取值范围是 [1, 2 ^ 31 - 1]，不足 1 或者超过上限都会初始化为 1，也就是说你调用 setTimeout(fn,">
-<meta name="keywords" content="-eventloop">
+<meta name="keywords" content="eventloop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件eventloop">
 <meta property="og:url" content="https://coldq.github.io/hexo/2018/02/18/nextTick和setTimeout和setImmediate/index.html">
@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/1-12-1.jpg">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/1-12-2.jpg">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/1-12-3.jpg">
-<meta property="og:updated_time" content="2018-07-25T12:52:21.336Z">
+<meta property="og:updated_time" content="2018-07-26T01:43:29.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件eventloop">
 <meta name="twitter:description" content="理解setTimeout、setImmediate、process.nextTick的区别  setTimeout 注册的回调会在事件循环的 timers、poll 和closing callbacks阶段执行。需要注意的是，计时器默认定义的 TIMEOUT_MAX 的取值范围是 [1, 2 ^ 31 - 1]，不足 1 或者超过上限都会初始化为 1，也就是说你调用 setTimeout(fn,">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:52:21" itemprop="dateModified" datetime="2018-07-25T20:52:21+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:43:29" itemprop="dateModified" datetime="2018-07-26T09:43:29+08:00">2018-07-26</time>
               
             
           </span>
@@ -422,7 +422,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -456,24 +456,26 @@
       
 
       
-        <h2 id="理解setTimeout、setImmediate、process-nextTick的区别"><a href="#理解setTimeout、setImmediate、process-nextTick的区别" class="headerlink" title="理解setTimeout、setImmediate、process.nextTick的区别"></a>理解setTimeout、setImmediate、process.nextTick的区别</h2><p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-4.jpg" alt=""></p>
+        <h1 id="理解setTimeout、setImmediate、process-nextTick的区别"><a href="#理解setTimeout、setImmediate、process-nextTick的区别" class="headerlink" title="理解setTimeout、setImmediate、process.nextTick的区别"></a>理解setTimeout、setImmediate、process.nextTick的区别</h1><p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-4.jpg" alt=""></p>
 <p> <code>setTimeout</code> 注册的回调会在事件循环的 <code>timers</code>、<code>poll</code> 和<code>closing callbacks</code>阶段执行。需要注意的是，计时器默认定义的 TIMEOUT_MAX 的取值范围是 <code>[1, 2 ^ 31 - 1]</code>，不足 1 或者超过上限都会初始化为 1，也就是说你调用 <code>setTimeout(fn, 0)</code>和 <code>setTimeout(fn, 1)</code>的效果是一样的。另一点，当timer到延时处理方法到达触发条件，于是将延时处理方法加入<strong>任务队列</strong>，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。没有办法保证，回调函数一定会在setTimeout()指定的时间执行。（setInterval会不管回调，准时调用）</p>
 <p><code>process.nextTick</code> 方法可以在当前”执行栈”的尾部–&gt;下一次Event Loop（主线程读取”任务队列”）之前–&gt;触发。process指定的回调函数注册的回调会在事件循环的当前阶段结束前执行，而不是只有 <code>poll</code>、<code>check</code> 阶段才会执行。<code>process</code> 是内核模块，运行时是全局上下文，所以 <code>microtask</code> 只有一个，无论你是在哪个阶段、哪个闭包内用 <code>nextTick</code> 注册的回调都会被 <code>push</code> 到<code>nextTickQueue</code>，并在事件循环当前阶段结束前执行。</p>
 <a id="more"></a>
 <p> <code>setImmediate</code> 注册的回调会在 <code>check</code> 阶段执行,属于check观察者，其设置的回调函数，会插入到<strong>下次事件循环的末尾</strong>。。因为它需要由 <code>check watcher</code>来执行，<code>check watcher</code>只在<code>check</code>阶段处于 <code>active</code> 状态。与 <code>process.nextTick</code>不同，setImmediate 因运行时的上下文不同而产生不同的 <code>ImmediateList</code>，所以 <code>microtask</code>可以有多个。<code>setImmediate</code> 会在异常的时候执行<code>process.nextTick(processImmediate)</code>，会在当前阶段结束前重新执行一次这个异常任务（即 check 阶段）。Else,创建异步操作的话毋庸置疑是使用setImmediate。</p>
 <p>setImmediate和setTimeout，似乎这两者执行顺序是不确定的</p>
 <p>参考 Issuses-6034，Node.js核心作者TJ的解释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timers are based on a time in the future, even if it’s 0, while check immediate is always on the next turn of the loop. So it’s possible that the delay of the event loop is low enough for the timer to fire after the immediate.</span><br><span class="line"></span><br><span class="line">You shouldn’t necessarily be concerned about the order of operations in this regard though in my estimation.</span><br></pre></td></tr></table></figure>
-<p>但是在node.js 最新版本（8.2.1），setTimeout都比setImmediate先执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = [];</span><br><span class="line"></span><br><span class="line">setImmediate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">res.push(<span class="number">2</span>)</span><br><span class="line">&#125;);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">res.push(<span class="number">1</span>)</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">res.push(<span class="number">3</span>)</span><br><span class="line">process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">res.push(<span class="number">4</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setImmediate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(res)<span class="comment">//[3,4,1,2]</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">B();</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
-<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-1.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">process.nextTick(B);</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
-<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-2.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">setImmediate(B);</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
-<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-3.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">timers are based on a time in the future, even if it’s 0, while check immediate is always</span><br><span class="line">on the next turn of the loop. So it’s possible that the delay of the event loop is low enough</span><br><span class="line">for the timer to fire after the immediate.</span><br><span class="line"></span><br><span class="line">You shouldn’t necessarily be concerned about the order of operations in this regard though</span><br><span class="line">in my estimation.</span><br></pre></td></tr></table></figure>
+<p>但是在node.js 最新版本（8.2.1），setTimeout都比setImmediate先执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = [];</span><br><span class="line"></span><br><span class="line">setImmediate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res.push(<span class="number">2</span>)</span><br><span class="line">&#125;);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res.push(<span class="number">1</span>)</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">res.push(<span class="number">3</span>)</span><br><span class="line">process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res.push(<span class="number">4</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setImmediate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)<span class="comment">//[3,4,1,2]</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">B();</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-1.jpg" alt="1"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">process.nextTick(B);</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-2.jpg" alt="3"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A();</span><br><span class="line">setImmediate(B);</span><br><span class="line">C();</span><br></pre></td></tr></table></figure>
+<p><img src="http://o9qr6mev3.bkt.clouddn.com/1-12-3.jpg" alt="2"></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.alloyteam.com/2015/10/turning-to-javascript-series-from-settimeout-said-the-event-loop-model/" target="_blank" rel="noopener">转向Javascript系列-从setTimeout说事件循环模型 I</a></p>
 <p><a href="https://cnodejs.org/topic/58d7d2f26f8b9bf02d1d0b1b" target="_blank" rel="noopener">深入理解 setTimeout、setImmediate、process.nextTick</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">JavaScript 运行机制详解：再谈Event Loop</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">Node 定时器详解-阮一峰</a></p>
 
       
     </div>
@@ -494,7 +496,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/eventloop/" rel="tag"># -eventloop</a>
+            <a href="/hexo/tags/eventloop/" rel="tag"># eventloop</a>
           
         </div>
       
@@ -507,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hexo/2018/01/08/兼容/" rel="next" title="IE 与其它浏览器兼容性">
-                <i class="fa fa-chevron-left"></i> IE 与其它浏览器兼容性
+              <a href="/hexo/2018/01/14/React-props-state/" rel="next" title="React中props和state的区别">
+                <i class="fa fa-chevron-left"></i> React中props和state的区别
               </a>
             
           </div>
@@ -517,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hexo/2018/03/18/nth-child/" rel="prev" title="CSS3的一个伪类选择器">
-                CSS3的一个伪类选择器 <i class="fa fa-chevron-right"></i>
+              <a href="/hexo/2018/02/21/ajax/" rel="prev" title="AJAX如何实现">
+                AJAX如何实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -618,8 +620,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -681,7 +681,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -731,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解setTimeout、setImmediate、process-nextTick的区别"><span class="nav-number">1.</span> <span class="nav-text">理解setTimeout、setImmediate、process.nextTick的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#举例"><span class="nav-number">1.1.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.2.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理解setTimeout、setImmediate、process-nextTick的区别"><span class="nav-number">1.</span> <span class="nav-text">理解setTimeout、setImmediate、process.nextTick的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">1.1.</span> <span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.1.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -751,7 +753,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -822,6 +824,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -845,6 +850,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

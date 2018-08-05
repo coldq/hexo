@@ -340,860 +340,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/cross-origin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ColdQ">
-      <meta itemprop="description" content="悠哉的生活。">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ColdQ的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo/2018/07/25/cross-origin/" itemprop="url">
-                  跨域问题及其解决
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-25 20:33:17 / Modified: 20:49:38" itemprop="dateCreated datePublished" datetime="2018-07-25T20:33:17+08:00">2018-07-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Http/" itemprop="url" rel="index"><span itemprop="name">Http</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="跨域问题及其解决"><a href="#跨域问题及其解决" class="headerlink" title="跨域问题及其解决"></a>跨域问题及其解决</h2><h3 id="产生跨域问题的原因"><a href="#产生跨域问题的原因" class="headerlink" title="产生跨域问题的原因"></a>产生跨域问题的原因</h3><p>跨域问题是由于浏览器<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">同源策略</a>，同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。</p>
-<h4 id="一个源的定义"><a href="#一个源的定义" class="headerlink" title="一个源的定义:"></a>一个源的定义:</h4><p>如果协议，端口（如果指定了一个）和域名对于两个页面是相同的，则两个页面具有相同的源。</p>
-<p>如<code>https://www.github.com:80</code>,https是协议，80是端口，<code>www.github.com</code>是域名。有一个不同，则不同源。</p>
-<p>下表给出了相对<code>http://store.company.com/dir/page.html</code>同源检测的示例:</p>
-<table>
-<thead>
-<tr>
-<th>URL</th>
-<th style="text-align:center">结果</th>
-<th style="text-align:right">原因</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://store.company.com/dir2/other.html" target="_blank" rel="noopener">http://store.company.com/dir2/other.html</a></td>
-<td style="text-align:center">成功</td>
-<td style="text-align:right">dir2/other.html</td>
-</tr>
-<tr>
-<td><a href="http://store.company.com/dir/inner/another.html" target="_blank" rel="noopener">http://store.company.com/dir/inner/another.html</a></td>
-<td style="text-align:center">成功</td>
-<td style="text-align:right">dir/inner/another.html</td>
-</tr>
-<tr>
-<td><a href="http://store.company.com/dir/inner/another.html" target="_blank" rel="noopener">http://store.company.com/dir/inner/another.html</a></td>
-<td style="text-align:center">失败</td>
-<td style="text-align:right">不同的协议 ( https )</td>
-</tr>
-<tr>
-<td><a href="http://store.company.com:81/dir/etc.html" target="_blank" rel="noopener">http://store.company.com:81/dir/etc.html</a></td>
-<td style="text-align:center">失败</td>
-<td style="text-align:right">不同的端口 ( 81 )</td>
-</tr>
-<tr>
-<td><a href="http://news.company.com/dir/other.html" target="_blank" rel="noopener">http://news.company.com/dir/other.html</a></td>
-<td style="text-align:center">失败</td>
-<td style="text-align:right">不同的域名 ( news )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/25/cross-origin/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/Contest47/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ColdQ">
-      <meta itemprop="description" content="悠哉的生活。">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ColdQ的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo/2018/07/25/Contest47/" itemprop="url">
-                  LeetCode Contest 47
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-25 20:32:13 / Modified: 20:49:23" itemprop="dateCreated datePublished" datetime="2018-07-25T20:32:13+08:00">2018-07-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="LeetCode-Contest-47"><a href="#LeetCode-Contest-47" class="headerlink" title="LeetCode Contest 47"></a>LeetCode Contest 47</h2><p>记录下做题思路。</p>
-<h3 id="665-Non-decreasing-Array"><a href="#665-Non-decreasing-Array" class="headerlink" title="665.Non-decreasing Array"></a>665.Non-decreasing Array</h3><p>Given an array with <code>n</code> integers, your task is to check if it could become non-decreasing by modifying <strong>at most</strong> <code>1</code> element.</p>
-<p>We define an array is non-decreasing if <code>array[i] &lt;= array[i + 1]</code> holds for every <code>i</code> (1 &lt;= i &lt; n).</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [4,2,3]</span><br><span class="line">Output: True</span><br><span class="line">Explanation: You could modify the first 4 to 1 to get a non-decreasing array.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [4,2,1]</span><br><span class="line">Output: False</span><br><span class="line">Explanation: You can&apos;t get a non-decreasing array by modify at most one element.</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/25/Contest47/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/cache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ColdQ">
-      <meta itemprop="description" content="悠哉的生活。">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ColdQ的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo/2018/07/25/cache/" itemprop="url">
-                  缓存
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-25 20:31:36 / Modified: 20:49:14" itemprop="dateCreated datePublished" datetime="2018-07-25T20:31:36+08:00">2018-07-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Http/" itemprop="url" rel="index"><span itemprop="name">Http</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p><a href="http://www.cnblogs.com/chenqf/p/6386163.html" target="_blank" rel="noopener">介绍缓存的好文</a></p>
-<h3 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h3><p>浏览器向服务器请求数据，发送请求(request)报文；服务器向浏览器返回数据，返回响应(response)报文。<br>报文信息主要分为两部分</p>
-<p>1.包含属性的首部(header)————————–附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中</p>
-<p>2.包含数据的主体部分(body)———————–HTTP请求真正想要传输的部分</p>
-<h3 id="缓存规则"><a href="#缓存规则" class="headerlink" title="缓存规则"></a>缓存规则</h3><p>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，可将其分为两大类(强制缓存，对比缓存)</p>
-<p>强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/25/cache/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/ajax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ColdQ">
-      <meta itemprop="description" content="悠哉的生活。">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ColdQ的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo/2018/07/25/ajax/" itemprop="url">
-                  AJAX如何实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-25 20:30:49 / Modified: 20:49:02" itemprop="dateCreated datePublished" datetime="2018-07-25T20:30:49+08:00">2018-07-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="AJAX如何实现"><a href="#AJAX如何实现" class="headerlink" title="AJAX如何实现"></a>AJAX如何实现</h2><p><a href="http://caibaojian.com/ajax-jsonp.html" target="_blank" rel="noopener">参考</a></p>
-<p>ajax的技术核心是 XMLHttpRequest 对象；</p>
-<p>ajax 请求过程：创建 XMLHttpRequest 对象、连接服务器、发送请求、接收响应数据；</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/25/ajax/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/react-component/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ColdQ">
-      <meta itemprop="description" content="悠哉的生活。">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ColdQ的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo/2018/07/25/react-component/" itemprop="url">
-                  Untitled
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-25 20:30:11 / Modified: 20:54:29" itemprop="dateCreated datePublished" datetime="2018-07-25T20:30:11+08:00">2018-07-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="class组件和无状态函数组件"><a href="#class组件和无状态函数组件" class="headerlink" title="class组件和无状态函数组件"></a>class组件和无状态函数组件</h2><p>React有三种定义react组件的方式，殊途同归；具体的三种方式：</p>
-<ul>
-<li>函数式定义的无状态组件</li>
-<li>es5原生方式React.createClass定义的组件</li>
-<li>es6形式的extends React.Component定义的组件</li>
-</ul>
-<h3 id="无状态函数式组件"><a href="#无状态函数式组件" class="headerlink" title="无状态函数式组件"></a>无状态函数式组件</h3><p>创建无状态函数式组件形式是从React 0.14版本开始出现的。它是为了创建纯展示组件，这种组件只负责根据传入的props来展示，不涉及到要state状态的操作。具体的无状态函数式组件，其官方指出：</p>
-<p>在大部分React代码中，大多数组件被写成无状态的组件，通过简单组合可以构建成其他的组件等；这种通过多个简单然后合并成一个大应用的设计模式被提倡。</p>
-<p>无状态函数式组件形式上表现为一个只带有一个render方法的组件类，通过函数形式或者ES6 arrow function的形式在创建，并且该组件是无state状态的。具体的创建形式如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloComponent</span>(<span class="params">props, <span class="regexp">/* context */</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello &#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HelloComponent</span> <span class="attr">name</span>=<span class="string">"Sebastian"</span> /&gt;</span>, mountNode)</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/25/react-component/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/25/padStart/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1240,12 +386,24 @@
                 
               
 
-              <time title="Created: 2018-07-25 19:10:51 / Modified: 20:09:51" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:51+08:00">2018-07-25</time>
+              <time title="Created: 2018-07-25 19:10:51" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:51+08:00">2018-07-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 10:33:30" itemprop="dateModified" datetime="2018-07-26T10:33:30+08:00">2018-07-26</time>
               
             
           </span>
@@ -1262,7 +420,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -1414,12 +572,24 @@
                 
               
 
-              <time title="Created: 2018-07-25 19:10:23 / Modified: 19:13:28" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:23+08:00">2018-07-25</time>
+              <time title="Created: 2018-07-25 19:10:23" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:23+08:00">2018-07-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 09:30:36" itemprop="dateModified" datetime="2018-07-26T09:30:36+08:00">2018-07-26</time>
               
             
           </span>
@@ -1436,7 +606,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -1600,7 +770,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:57:41" itemprop="dateModified" datetime="2018-07-25T20:57:41+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:29:47" itemprop="dateModified" datetime="2018-07-26T09:29:47+08:00">2018-07-26</time>
               
             
           </span>
@@ -1781,7 +951,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:55:46" itemprop="dateModified" datetime="2018-07-25T20:55:46+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:30:36" itemprop="dateModified" datetime="2018-07-26T09:30:36+08:00">2018-07-26</time>
               
             
           </span>
@@ -1798,7 +968,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -1905,7 +1075,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/06/sort/">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/01/React-render/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ColdQ">
@@ -1924,8 +1094,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/hexo/2018/07/06/sort/" itemprop="url">
-                  各种排序汇总
+                <a class="post-title-link" href="/hexo/2018/07/01/React-render/" itemprop="url">
+                  React渲染
                 </a>
               
             
@@ -1951,7 +1121,7 @@
                 
               
 
-              <time title="Created: 2018-07-06 18:49:07" itemprop="dateCreated datePublished" datetime="2018-07-06T18:49:07+08:00">2018-07-06</time>
+              <time title="Created: 2018-07-01 19:49:07" itemprop="dateCreated datePublished" datetime="2018-07-01T19:49:07+08:00">2018-07-01</time>
             
 
             
@@ -1968,7 +1138,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:57:22" itemprop="dateModified" datetime="2018-07-25T20:57:22+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:27:44" itemprop="dateModified" datetime="2018-07-26T09:27:44+08:00">2018-07-26</time>
               
             
           </span>
@@ -1985,7 +1155,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a></span>
 
                 
                 
@@ -2020,14 +1190,908 @@
 
       
         
-          <h2 id="各种排序汇总"><a href="#各种排序汇总" class="headerlink" title="各种排序汇总"></a>各种排序汇总</h2><p> <img src="http://o9qr6mev3.bkt.clouddn.com/sort.jpg" style="width: 80%;height: 100%;" alt="排序" align="center"></p>
-<p>以下都是js的简单实现。</p>
-<h3 id="排序的稳定性"><a href="#排序的稳定性" class="headerlink" title="排序的稳定性"></a>排序的稳定性</h3><p>假定在待排序的记录序列中，存在多个具有相同的关键字的记录，若经过排序，这些记录的相对次序保持不变，即在原序列中，ri=rj，且ri在rj之前，而在排序后的序列中，ri仍在rj之前，则称这种排序算法是稳定的；否则称为不稳定的。</p>
-<p>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法；而冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法。</p>
-<h3 id="1-直接插入"><a href="#1-直接插入" class="headerlink" title="1.直接插入"></a>1.直接插入</h3><p>基本思想：前i个数是已经排好的数，然后把第i+1个数插入其中。</p>
+          <p>##渲染</p>
+<h3 id="合并操作"><a href="#合并操作" class="headerlink" title="合并操作"></a>合并操作</h3><p>你调用 component 的 setState 方法的时候, React 将其标记为 dirty。<br>到每一个事件循环结束, React 检查所有标记 dirty 的 component 重新绘制。</p>
+<p>这里的”合并操作”是说, 在一个事件循环当中, DOM 只会被更新一次.<br>这个特性是构建高性能应用的关键, 而且用通常的 JavaScript 代码难以实现。</p>
+<p>而在 React 应用里, 你默认就能实现。</p>
+<p><img src="http://o9qr6mev3.bkt.clouddn.com/5-6-1.png" alt=""></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/hexo/2018/07/06/sort/#more" rel="contents">
+            <a class="btn" href="/hexo/2018/07/01/React-render/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/07/01/React-diff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexo/2018/07/01/React-diff/" itemprop="url">
+                  React diff　算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-01 14:49:07" itemprop="dateCreated datePublished" datetime="2018-07-01T14:49:07+08:00">2018-07-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 09:27:30" itemprop="dateModified" datetime="2018-07-26T09:27:30+08:00">2018-07-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="React-diff-算法"><a href="#React-diff-算法" class="headerlink" title="React diff　算法"></a>React diff　算法</h2><p>React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，这让我们可以无需担心性能问题而”毫无顾忌”的随时“刷新”整个页面，由虚拟DOM来确保只对界面上真正变化的部分进行实际的DOM操作。</p>
+<h3 id="什么是DOM-Diff算法"><a href="#什么是DOM-Diff算法" class="headerlink" title="什么是DOM Diff算法"></a>什么是DOM Diff算法</h3><p>Web界面由DOM树来构成，当其中某一部分发生变化时，其实就是对应的某个DOM节点发生了变化。在React中，构建UI界面的思路是由当前状态决定界面。前后两个状态就对应两套界面，然后由React来比较两个界面的区别，这就需要对DOM树进行Diff算法分析。</p>
+<p>即给定任意两棵树，找到最少的转换步骤。但是标准的的Diff算法复杂度需要O(n^3)，这显然无法满足性能要求。要达到每次界面都可以整体刷新界面的目的，势必需要对算法进行优化。这看上去非常有难度，然而Facebook工程师却做到了，他们结合Web界面的特点做出了两个简单的假设，使得Diff算法复杂度直接降低到O(n)</p>
+<ol>
+<li>两个相同组件产生类似的DOM结构，不同的组件产生不同的DOM结构；</li>
+<li>对于同一层次的一组子节点，它们可以通过唯一的id进行区分。</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexo/2018/07/01/React-diff/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/06/30/react-purecomponent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexo/2018/06/30/react-purecomponent/" itemprop="url">
+                  PureRenderMixin 与 PureComponent
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-30 16:49:07" itemprop="dateCreated datePublished" datetime="2018-06-30T16:49:07+08:00">2018-06-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 09:27:40" itemprop="dateModified" datetime="2018-07-26T09:27:40+08:00">2018-07-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="PureRenderMixin-与-PureComponent"><a href="#PureRenderMixin-与-PureComponent" class="headerlink" title="PureRenderMixin 与 PureComponent"></a>PureRenderMixin 与 PureComponent</h2><p>为了提高React组件渲染性能，React 针对组件的 shouldComponentUpdate 方法进行了封装处理，我们不需要在每个组件里面手动编写 shouldComponentUpdate。</p>
+<h3 id="PureRenderMixin"><a href="#PureRenderMixin" class="headerlink" title="PureRenderMixin"></a>PureRenderMixin</h3><p>React在之前版本提供了 PureRenderMixin 的mixin形式，其用法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// react官方demo</span></span><br><span class="line"><span class="keyword">import</span> PureRenderMixin <span class="keyword">from</span> <span class="string">'react-addons-pure-render-mixin'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>其原理就是重写了 shouldComponentUpdate 方法。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexo/2018/06/30/react-purecomponent/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/06/30/react-component/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexo/2018/06/30/react-component/" itemprop="url">
+                  class组件和无状态函数组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-30 16:49:07" itemprop="dateCreated datePublished" datetime="2018-06-30T16:49:07+08:00">2018-06-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 09:37:11" itemprop="dateModified" datetime="2018-07-26T09:37:11+08:00">2018-07-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="class组件和无状态函数组件"><a href="#class组件和无状态函数组件" class="headerlink" title="class组件和无状态函数组件"></a>class组件和无状态函数组件</h1><p>React有三种定义react组件的方式，殊途同归；具体的三种方式：</p>
+<ul>
+<li>函数式定义的无状态组件</li>
+<li>es5原生方式React.createClass定义的组件</li>
+<li>es6形式的extends React.Component定义的组件</li>
+</ul>
+<h2 id="无状态函数式组件"><a href="#无状态函数式组件" class="headerlink" title="无状态函数式组件"></a>无状态函数式组件</h2><p>创建无状态函数式组件形式是从React 0.14版本开始出现的。它是为了创建纯展示组件，这种组件只负责根据传入的props来展示，不涉及到要state状态的操作。具体的无状态函数式组件，其官方指出：</p>
+<p>在大部分React代码中，大多数组件被写成无状态的组件，通过简单组合可以构建成其他的组件等；这种通过多个简单然后合并成一个大应用的设计模式被提倡。</p>
+<p>无状态函数式组件形式上表现为一个只带有一个render方法的组件类，通过函数形式或者ES6 arrow function的形式在创建，并且该组件是无state状态的。具体的创建形式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloComponent</span>(<span class="params">props, <span class="regexp">/* context */</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello &#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">HelloComponent</span> <span class="attr">name</span>=<span class="string">"Sebastian"</span> /&gt;</span>, mountNode)</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexo/2018/06/30/react-component/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/06/29/js参数传递/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexo/2018/06/29/js参数传递/" itemprop="url">
+                  js中参数传递方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-29 13:49:07" itemprop="dateCreated datePublished" datetime="2018-06-29T13:49:07+08:00">2018-06-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 09:30:36" itemprop="dateModified" datetime="2018-07-26T09:30:36+08:00">2018-07-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="js中参数传递方式"><a href="#js中参数传递方式" class="headerlink" title="js中参数传递方式"></a>js中参数传递方式</h2><p>一般编程语言中参数传递存在两种方式：按值传递，引用传递。但在Js中，参数的传递有点另类。先看一下值传递和引用传递的概念。</p>
+<h3 id="值传递："><a href="#值传递：" class="headerlink" title="值传递："></a>值传递：</h3><p>形参是实参的拷贝，改变形参的值并不会影响外部实参的值。从被调用函数的角度来说，值传递是单向的（实参-&gt;形参），参数的值只能传入，不能传出。当函数内部需要修改参数，并且不希望这个改变影响调用者时，采用值传递。</p>
+<h3 id="引用传递："><a href="#引用传递：" class="headerlink" title="引用传递："></a>引用传递：</h3><p>形参相当于是实参的“别名”，对形参的操作其实就是对实参的操作，在引用传递过程中，被调函数的形式参数虽然也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。正因为如此，被调函数对形参做的任何操作都影响了主调函数中的实参变量。</p>
+<p>另外c++中还有指针传递：形参为指向实参地址的指针，当对形参的指向操作时，就相当于对实参本身进行的操作。引用和指针是两个概念。引用仅是一个别名，具有很多限制；而指针是一个存放对象地址的变量，比较灵活。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexo/2018/06/29/js参数传递/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2018/06/24/css模块化组件化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexo/2018/06/24/css模块化组件化/" itemprop="url">
+                  css 组件化、模块化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-24 20:34:08" itemprop="dateCreated datePublished" datetime="2018-06-24T20:34:08+08:00">2018-06-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-25 20:49:51" itemprop="dateModified" datetime="2018-07-25T20:49:51+08:00">2018-07-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Css/" itemprop="url" rel="index"><span itemprop="name">Css</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="css-组件化、模块化"><a href="#css-组件化、模块化" class="headerlink" title="css 组件化、模块化"></a>css 组件化、模块化</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.m-tab&#123;&#125; //模块</span><br><span class="line">.u-tab-nav&#123;&#125; // 组件</span><br></pre></td></tr></table></figure>
+<p>用css把一个公共模块统一定义，并且把其中的公用组件用伪类实现。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.m-tab</span> <span class="selector-class">.a</span>&#123;&#125;</span><br><span class="line"><span class="selector-class">.m-tab</span> <span class="selector-class">.a</span> <span class="selector-tag">b</span>&#123;&#125;</span><br><span class="line">.m-tab:after &#123;...&#125;  //例如实现一个公用的箭头</span><br></pre></td></tr></table></figure>
+<h2 id="0-5像素的线条"><a href="#0-5像素的线条" class="headerlink" title="0.5像素的线条"></a>0.5像素的线条</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexo/2018/06/24/css模块化组件化/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -2144,8 +2208,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -2207,7 +2269,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2261,7 +2325,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2332,6 +2396,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -2355,6 +2422,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

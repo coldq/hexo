@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="Eslint实时监测工具Eslint 是个好东西 ：一个按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。配合 Airbnb 的 eslint 配置，加上 fix 功能，自动就修正了很多不规范的代码，真是省事又省心(^o^)。 但每次都要手动去运行，一个个监测，似乎又不是很方便。之前写React的时候，用了脚手架，集成了动态监测的功能，但需要用到 webpack。 而有时候就">
-<meta name="keywords" content="javascript,eslint">
+<meta name="keywords" content="Javascript,eslint">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eslint实时监测工具">
 <meta property="og:url" content="https://coldq.github.io/hexo/2018/03/28/eslint实时监测/index.html">
@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/eslint/esl.png">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/eslint/eslfix.png">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/eslint/fixed.png">
-<meta property="og:updated_time" content="2018-07-25T12:51:16.968Z">
+<meta property="og:updated_time" content="2018-07-26T01:53:59.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eslint实时监测工具">
 <meta name="twitter:description" content="Eslint实时监测工具Eslint 是个好东西 ：一个按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。配合 Airbnb 的 eslint 配置，加上 fix 功能，自动就修正了很多不规范的代码，真是省事又省心(^o^)。 但每次都要手动去运行，一个个监测，似乎又不是很方便。之前写React的时候，用了脚手架，集成了动态监测的功能，但需要用到 webpack。 而有时候就">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:51:16" itemprop="dateModified" datetime="2018-07-25T20:51:16+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:53:59" itemprop="dateModified" datetime="2018-07-26T09:53:59+08:00">2018-07-26</time>
               
             
           </span>
@@ -422,7 +422,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -456,25 +456,25 @@
       
 
       
-        <h2 id="Eslint实时监测工具"><a href="#Eslint实时监测工具" class="headerlink" title="Eslint实时监测工具"></a>Eslint实时监测工具</h2><p>Eslint 是个好东西 ：一个按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。配合 Airbnb 的 eslint 配置，加上 fix 功能，自动就修正了很多不规范的代码，真是省事又省心(^o^)。</p>
+        <h1 id="Eslint实时监测工具"><a href="#Eslint实时监测工具" class="headerlink" title="Eslint实时监测工具"></a>Eslint实时监测工具</h1><p>Eslint 是个好东西 ：一个按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。配合 Airbnb 的 eslint 配置，加上 fix 功能，自动就修正了很多不规范的代码，真是省事又省心(^o^)。</p>
 <p>但每次都要手动去运行，一个个监测，似乎又不是很方便。之前写React的时候，用了脚手架，集成了动态监测的功能，但需要用到 webpack。 而有时候就简单地写些 nodejs，用不到 webpack。因此做了一个小工具 (很简单，纯属自嗨 &gt;_&lt;)，在自己写代码时，可以让 eslint 动态监测并修正代码。</p>
-<h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1. 使用"></a>1. 使用</h3><p>用起来很简单，首先保证已经安装了 eslint, 附 eslint 安装过程：</p>
+<h2 id="1-使用"><a href="#1-使用" class="headerlink" title="1. 使用"></a>1. 使用</h2><p>用起来很简单，首先保证已经安装了 eslint, 附 eslint 安装过程：</p>
 <a id="more"></a>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 1:</span><br><span class="line">npm install eslint --save-dev</span><br><span class="line">// 2:</span><br><span class="line">./node_modules/.bin/eslint --init</span><br></pre></td></tr></table></figure>
 <p>建议在第二步直接选择已有配置中的 Airbnb 配置~</p>
-<h3 id="2-安装-eslint-watchs："><a href="#2-安装-eslint-watchs：" class="headerlink" title="2. 安装 eslint-watchs："></a>2. 安装 eslint-watchs：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint-watchs</span><br></pre></td></tr></table></figure>
-<h3 id="3-然后在package-json-中的-scripts-中加入："><a href="#3-然后在package-json-中的-scripts-中加入：" class="headerlink" title="3. 然后在package.json 中的 scripts 中加入："></a>3. 然后在package.json 中的 scripts 中加入：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"es": "node node_modules\\eslint-watchs\\eslintWatch.js",</span><br><span class="line">"esfix": "node node_modules\\eslint-watchs\\eslintWatch.js --fix",</span><br><span class="line">"esw": "node node_modules\\eslint-watchs\\eslintWatch.js --watch",</span><br><span class="line">"eswfix": "node node_modules\\eslint-watchs\\eslintWatch.js --watch --fix"</span><br></pre></td></tr></table></figure>
+<h2 id="2-安装-eslint-watchs："><a href="#2-安装-eslint-watchs：" class="headerlink" title="2. 安装 eslint-watchs："></a>2. 安装 eslint-watchs：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev eslint-watchs</span><br></pre></td></tr></table></figure>
+<h2 id="3-然后在package-json-中的-scripts-中加入："><a href="#3-然后在package-json-中的-scripts-中加入：" class="headerlink" title="3. 然后在package.json 中的 scripts 中加入："></a>3. 然后在package.json 中的 scripts 中加入：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"es": "node node_modules\\eslint-watchs\\eslintWatch.js",</span><br><span class="line">"esfix": "node node_modules\\eslint-watchs\\eslintWatch.js --fix",</span><br><span class="line">"esw": "node node_modules\\eslint-watchs\\eslintWatch.js --watch",</span><br><span class="line">"eswfix": "node node_modules\\eslint-watchs\\eslintWatch.js --watch --fix"</span><br></pre></td></tr></table></figure>
 <p>当然，运行名称自己随便定。Ok，现在直接运行下面任意指令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm run es       // 运行一次，检测代码</span><br><span class="line">npm run esfix    // 运行一次，检测并fix代码</span><br><span class="line">npm run esw      // 实时监测</span><br><span class="line">npm run eswfix   // 实时监测并修正</span><br></pre></td></tr></table></figure>
-<h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4. 效果"></a>4. 效果</h3><p>随手一个快排，短短几行代码：</p>
+<h2 id="4-效果"><a href="#4-效果" class="headerlink" title="4. 效果"></a>4. 效果</h2><p>随手一个快排，短短几行代码：</p>
 <p><img src="http://o9qr6mev3.bkt.clouddn.com/eslint/badcode.png" alt="1"></p>
 <p><code>npm run es</code> 后，一堆错误…：<br><img src="http://o9qr6mev3.bkt.clouddn.com/eslint/esl.png" alt="2"></p>
 <p><code>npm run esfix</code> 自动修正：<br><img src="http://o9qr6mev3.bkt.clouddn.com/eslint/eslfix.png" alt="3"></p>
 <p>修正过后，大部分格式错误被自动修复了，然后自己手动改改，基本代码就OK了。</p>
 <p><img src="http://o9qr6mev3.bkt.clouddn.com/eslint/fixed.png" alt="4"></p>
-<h3 id="5-Ps"><a href="#5-Ps" class="headerlink" title="5. Ps"></a>5. Ps</h3><p>Airbnb 的配置虽然好，但可能并不适合每个人。再使用过程中，自己修改了一些配置：</p>
+<h2 id="5-Ps"><a href="#5-Ps" class="headerlink" title="5. Ps"></a>5. Ps</h2><p>Airbnb 的配置虽然好，但可能并不适合每个人。再使用过程中，自己修改了一些配置：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"extends"</span>: <span class="string">"airbnb-base"</span>,</span><br><span class="line">    <span class="attr">"rules"</span>: &#123;</span><br><span class="line">        <span class="attr">"no-console"</span>: [<span class="string">"off"</span>],</span><br><span class="line">        <span class="attr">"no-plusplus"</span>:[<span class="string">"off"</span>],</span><br><span class="line">        <span class="attr">"import/no-extraneous-dependencies"</span>:[<span class="string">"off"</span>],</span><br><span class="line">        <span class="attr">"semi"</span>:[<span class="string">"warn"</span>],</span><br><span class="line">        <span class="attr">"no-bitwise"</span>:[<span class="string">"warn"</span>],</span><br><span class="line">        <span class="attr">"no-unused-vars"</span>:[<span class="string">"warn"</span>],</span><br><span class="line">        <span class="attr">"no-use-before-define"</span>:[<span class="string">"warn"</span>],</span><br><span class="line">        <span class="attr">"indent"</span>: [<span class="string">"warn"</span>, <span class="number">4</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="6-源码"><a href="#6-源码" class="headerlink" title="6. 源码"></a>6. 源码</h3><p>源码很简单，就一个代码文件，几十行…</p>
+<h2 id="6-源码"><a href="#6-源码" class="headerlink" title="6. 源码"></a>6. 源码</h2><p>源码很简单，就一个代码文件，几十行…</p>
 <p>Github地址：<a href="https://github.com/coldq/eslint-watchs" target="_blank" rel="noopener">eslint wacths</a>。</p>
 
       
@@ -496,7 +496,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/hexo/tags/Javascript/" rel="tag"># Javascript</a>
           
             <a href="/hexo/tags/eslint/" rel="tag"># eslint</a>
           
@@ -521,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hexo/2018/04/28/fortest/" rel="prev" title="杂记">
-                杂记 <i class="fa fa-chevron-right"></i>
+              <a href="/hexo/2018/04/25/cache/" rel="prev" title="缓存">
+                缓存 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,8 +622,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -685,7 +683,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -735,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eslint实时监测工具"><span class="nav-number">1.</span> <span class="nav-text">Eslint实时监测工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用"><span class="nav-number">1.1.</span> <span class="nav-text">1. 使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装-eslint-watchs："><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装 eslint-watchs：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-然后在package-json-中的-scripts-中加入："><span class="nav-number">1.3.</span> <span class="nav-text">3. 然后在package.json 中的 scripts 中加入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-效果"><span class="nav-number">1.4.</span> <span class="nav-text">4. 效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Ps"><span class="nav-number">1.5.</span> <span class="nav-text">5. Ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-源码"><span class="nav-number">1.6.</span> <span class="nav-text">6. 源码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Eslint实时监测工具"><span class="nav-number">1.</span> <span class="nav-text">Eslint实时监测工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用"><span class="nav-number">1.1.</span> <span class="nav-text">1. 使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装-eslint-watchs："><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装 eslint-watchs：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-然后在package-json-中的-scripts-中加入："><span class="nav-number">1.3.</span> <span class="nav-text">3. 然后在package.json 中的 scripts 中加入：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-效果"><span class="nav-number">1.4.</span> <span class="nav-text">4. 效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Ps"><span class="nav-number">1.5.</span> <span class="nav-text">5. Ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-源码"><span class="nav-number">1.6.</span> <span class="nav-text">6. 源码</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -755,7 +755,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -826,6 +826,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -849,6 +852,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

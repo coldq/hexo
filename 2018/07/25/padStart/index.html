@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="padStart 和 padEnd可以在字符串的前后面进行字符补全。 padStart语法如下：1str.padStart(targetLength [, padString]) 其中：  targetLength （可选）  targetLength指目标字符串长度。   根据测试，targetLength参数缺省也不会报错，原本的字符串原封不动返回，不过代码没有任何意义，因此，基本上没有使用的">
-<meta name="keywords" content="javascript,bind">
+<meta name="keywords" content="Javascript,bind">
 <meta property="og:type" content="article">
 <meta property="og:title" content="padStart 和 padEnd">
 <meta property="og:url" content="https://coldq.github.io/hexo/2018/07/25/padStart/index.html">
 <meta property="og:site_name" content="ColdQ的个人博客">
 <meta property="og:description" content="padStart 和 padEnd可以在字符串的前后面进行字符补全。 padStart语法如下：1str.padStart(targetLength [, padString]) 其中：  targetLength （可选）  targetLength指目标字符串长度。   根据测试，targetLength参数缺省也不会报错，原本的字符串原封不动返回，不过代码没有任何意义，因此，基本上没有使用的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-25T12:09:51.284Z">
+<meta property="og:updated_time" content="2018-07-26T02:33:30.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="padStart 和 padEnd">
 <meta name="twitter:description" content="padStart 和 padEnd可以在字符串的前后面进行字符补全。 padStart语法如下：1str.padStart(targetLength [, padString]) 其中：  targetLength （可选）  targetLength指目标字符串长度。   根据测试，targetLength参数缺省也不会报错，原本的字符串原封不动返回，不过代码没有任何意义，因此，基本上没有使用的">
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2018-07-25 19:10:51 / Modified: 20:09:51" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:51+08:00">2018-07-25</time>
+              <time title="Created: 2018-07-25 19:10:51" itemprop="dateCreated datePublished" datetime="2018-07-25T19:10:51+08:00">2018-07-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-26 10:33:30" itemprop="dateModified" datetime="2018-07-26T10:33:30+08:00">2018-07-26</time>
               
             
           </span>
@@ -405,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -469,7 +481,7 @@
 <p>语法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.padEnd(targetLength [, padString])</span><br></pre></td></tr></table></figure>
 <h2 id="Polyfill代码"><a href="#Polyfill代码" class="headerlink" title="Polyfill代码"></a>Polyfill代码</h2><p>以下<code>Polyfill</code>代码取自<code>polyfill</code>项目中的<code>string.polyfill.js</code>，其中使用依赖的repeat()也是ES6新增方法，因此，完成<code>Polyfill</code>代码如下，注释部分我做了简单的翻译，代码部分简化了些许逻辑，同时，修复了一个bug，下面代码红色高亮部分就是修复内容：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://github.com/uxitten/polyfill/blob/master/string.polyfill.js</span></span><br><span class="line"><span class="comment">// repeat()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.repeat) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.repeat = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="meta">        'use strict'</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'can\'t convert '</span> + <span class="keyword">this</span> + <span class="string">' to object'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">''</span> + <span class="keyword">this</span>;</span><br><span class="line">        count = +count;</span><br><span class="line">        <span class="keyword">if</span> (count != count) &#123;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must be non-negative'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="literal">Infinity</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must be less than infinity'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        count = <span class="built_in">Math</span>.floor(count);</span><br><span class="line">        <span class="keyword">if</span> (str.length == <span class="number">0</span> || count == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str.length * count &gt;= <span class="number">1</span> &lt;&lt; <span class="number">28</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must not overflow maximum string size'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> rpt = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">for</span> (; ;) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((count &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">                rpt += str;</span><br><span class="line">            &#125;</span><br><span class="line">            count &gt;&gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            str += str;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rpt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// padStart()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.padStart) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.padStart = <span class="function"><span class="keyword">function</span> (<span class="params">targetLength, padString</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 截断数字或将非数字转换为0</span></span><br><span class="line">        targetLength = targetLength&gt;&gt;<span class="number">0</span>; </span><br><span class="line">        padString = <span class="built_in">String</span>((<span class="keyword">typeof</span> padString !== <span class="string">'undefined'</span> ? padString : <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.length &gt; targetLength || padString === <span class="string">''</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        targetLength = targetLength-<span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (targetLength &gt; padString.length) &#123;</span><br><span class="line">            <span class="comment">// 添加到初始值以确保长度足够</span></span><br><span class="line">            padString += padString.repeat(targetLength / padString.length); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> padString.slice(<span class="number">0</span>, targetLength) + <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// padEnd()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.padEnd) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.padEnd = <span class="function"><span class="keyword">function</span> (<span class="params">targetLength, padString</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 转数值或者非数值转换成0</span></span><br><span class="line">        targetLength = targetLength &gt;&gt; <span class="number">0</span>; </span><br><span class="line">        padString = <span class="built_in">String</span>((<span class="keyword">typeof</span> padString !== <span class="string">'undefined'</span> ? padString : <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.length &gt; targetLength || padString === <span class="string">''</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        targetLength = targetLength - <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (targetLength &gt; padString.length) &#123;</span><br><span class="line">            <span class="comment">// 添加到初始值以确保长度足够</span></span><br><span class="line">            padString += padString.repeat(targetLength / padString.length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>) + padString.slice(<span class="number">0</span>, targetLength);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://github.com/uxitten/polyfill/blob/master/string.polyfill.js</span></span><br><span class="line"><span class="comment">// repeat()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.repeat) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.repeat = <span class="function"><span class="keyword">function</span> (<span class="params">count</span>) </span>&#123;</span><br><span class="line"><span class="meta">        'use strict'</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'can\'t convert '</span> + <span class="keyword">this</span> + <span class="string">' to object'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">''</span> + <span class="keyword">this</span>;</span><br><span class="line">        count = +count;</span><br><span class="line">        <span class="keyword">if</span> (count != count) &#123;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must be non-negative'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="literal">Infinity</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must be less than infinity'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        count = <span class="built_in">Math</span>.floor(count);</span><br><span class="line">        <span class="keyword">if</span> (str.length == <span class="number">0</span> || count == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str.length * count &gt;= <span class="number">1</span> &lt;&lt; <span class="number">28</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'repeat count must not overflow maximum string size'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> rpt = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">for</span> (; ;) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((count &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">                rpt += str;</span><br><span class="line">            &#125;</span><br><span class="line">            count &gt;&gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            str += str;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rpt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// padStart()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.padStart) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.padStart = <span class="function"><span class="keyword">function</span> (<span class="params">targetLength, padString</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 截断数字或将非数字转换为0</span></span><br><span class="line">        targetLength = targetLength&gt;&gt;<span class="number">0</span>;</span><br><span class="line">        padString = <span class="built_in">String</span>((<span class="keyword">typeof</span> padString !== <span class="string">'undefined'</span> ? padString : <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.length &gt; targetLength || padString === <span class="string">''</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        targetLength = targetLength-<span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (targetLength &gt; padString.length) &#123;</span><br><span class="line">            <span class="comment">// 添加到初始值以确保长度足够</span></span><br><span class="line">            padString += padString.repeat(targetLength / padString.length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> padString.slice(<span class="number">0</span>, targetLength) + <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// padEnd()方法的polyfill</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.padEnd) &#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.padEnd = <span class="function"><span class="keyword">function</span> (<span class="params">targetLength, padString</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 转数值或者非数值转换成0</span></span><br><span class="line">        targetLength = targetLength &gt;&gt; <span class="number">0</span>;</span><br><span class="line">        padString = <span class="built_in">String</span>((<span class="keyword">typeof</span> padString !== <span class="string">'undefined'</span> ? padString : <span class="string">' '</span>));</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.length &gt; targetLength || padString === <span class="string">''</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        targetLength = targetLength - <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (targetLength &gt; padString.length) &#123;</span><br><span class="line">            <span class="comment">// 添加到初始值以确保长度足够</span></span><br><span class="line">            padString += padString.repeat(targetLength / padString.length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">String</span>(<span class="keyword">this</span>) + padString.slice(<span class="number">0</span>, targetLength);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上<code>polyfill</code>代码需要放在调用<code>padStart()/padEnd()</code>方法的代码的前面，只要在合适的位置就这么一粘贴，然后，无论什么版本浏览器浏览器，哪怕IE6，IE8，我们也可以放心使用<code>padStart()</code>或者<code>padEnd()</code>方法了。</p>
 
       
@@ -491,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/hexo/tags/Javascript/" rel="tag"># Javascript</a>
           
             <a href="/hexo/tags/bind/" rel="tag"># bind</a>
           
@@ -515,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hexo/2018/07/25/react-component/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -617,8 +625,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -680,7 +686,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -750,7 +758,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -821,6 +829,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -844,6 +855,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

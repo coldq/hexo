@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
-<meta name="keywords" content="-javascript">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="又是杂记">
 <meta property="og:url" content="https://coldq.github.io/hexo/2018/06/19/js各种知识点/index.html">
 <meta property="og:site_name" content="ColdQ的个人博客">
 <meta property="og:description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-25T12:52:08.910Z">
+<meta property="og:updated_time" content="2018-07-26T06:28:59.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="又是杂记">
 <meta name="twitter:description" content="w3c 制定的 javascript 标准事件模型触发顺序事件捕获-&amp;gt;事件处理-&amp;gt;事件冒泡 绑定方法： 直接Dom绑定 js的onXXX绑定 添加事件监听 addEventListener(eventName,Handle,useCaptrue)  IE9.0及以上版本attachEvent(eventName,Handle) (IE9.0以下版本)   图片服务器几个原因：1、负载均">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:52:08" itemprop="dateModified" datetime="2018-07-25T20:52:08+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 14:28:59" itemprop="dateModified" datetime="2018-07-26T14:28:59+08:00">2018-07-26</time>
               
             
           </span>
@@ -521,7 +521,7 @@
 </ol>
 <h3 id="JavaScript-数据类型"><a href="#JavaScript-数据类型" class="headerlink" title="JavaScript 数据类型"></a>JavaScript 数据类型</h3><p>字符串、数字、布尔、数组、对象、Null、Undefined、Symbol</p>
 <h3 id="web-worker"><a href="#web-worker" class="headerlink" title="web worker"></a>web worker</h3><p>web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w=<span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = <span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="减少重绘（repaint）和重排（reflow）-网页性能优化"><a href="#减少重绘（repaint）和重排（reflow）-网页性能优化" class="headerlink" title="减少重绘（repaint）和重排（reflow） [网页性能优化]"></a>减少重绘（repaint）和重排（reflow） [网页性能优化]</h3><p>提高网页性能，就是要降低”重排”和”重绘”的频率和成本，尽量少触发重新渲染。</p>
 <ol>
 <li>Dom 读写操作分离</li>
@@ -531,26 +531,28 @@
 <li>使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染。</li>
 </ol>
 <p><a href="http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="noopener">网页性能优化</a></p>
-<p>###　window.requestAnimationFrame() 方法</p>
-<p> 方法告诉浏览器您希望执行动画，并请求浏览器调用指定的函数在下一次重绘之前更新动画。该方法将在重绘之前调用的回调作为参数。</p>
+<h3 id="window-requestAnimationFrame-方法"><a href="#window-requestAnimationFrame-方法" class="headerlink" title="window.requestAnimationFrame() 方法"></a>window.requestAnimationFrame() 方法</h3><p> 方法告诉浏览器您希望执行动画，并请求浏览器调用指定的函数在下一次重绘之前更新动画。该方法将在重绘之前调用的回调作为参数。</p>
 <p> 如果你想做逐帧动画的时候，你应该用这个方法。这就要求你的动画函数执行会先于浏览器重绘动作。通常来说，被调用的频率是每秒60次，但是一般会遵循W3C标准规定的频率。如果是后台标签页面，重绘频率则会大大降低。</p>
-<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requestID = window.requestAnimationFrame(callback);               // Firefox 23 / IE10 / Chrome / Safari 7 (incl. iOS)</span><br><span class="line">requestID = window.mozRequestAnimationFrame(callback);                // Firefox &lt; 23</span><br><span class="line">requestID = window.webkitRequestAnimationFrame(callback); // Older versions Chrome/Webkit</span><br></pre></td></tr></table></figure>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">requestID = <span class="built_in">window</span>.requestAnimationFrame(callback);</span><br><span class="line"><span class="comment">// Firefox 23 / IE10 / Chrome / Safari 7 (incl. iOS)</span></span><br><span class="line"></span><br><span class="line">requestID = <span class="built_in">window</span>.mozRequestAnimationFrame(callback);</span><br><span class="line"><span class="comment">// Firefox &lt; 23</span></span><br><span class="line"></span><br><span class="line">requestID = <span class="built_in">window</span>.webkitRequestAnimationFrame(callback);</span><br><span class="line"><span class="comment">// Older versions Chrome/Webkit</span></span><br></pre></td></tr></table></figure>
 <h4 id="参数Edit"><a href="#参数Edit" class="headerlink" title="参数Edit"></a>参数Edit</h4><ul>
-<li>callback<br>在每次需要重新绘制动画时,会调用这个参数所指定的函数。这个回调函数会收到一个参数，这个 DOMHighResTimeStamp 类型的参数指示当前时间距离开始触发 requestAnimationFrame 的回调的时间。</li>
+<li>callback</li>
 </ul>
+<p>在每次需要重新绘制动画时,会调用这个参数所指定的函数。这个回调函数会收到一个参数，这个 DOMHighResTimeStamp 类型的参数指示当前时间距离开始触发 requestAnimationFrame 的回调的时间。</p>
 <h3 id="window-requestIdleCallback"><a href="#window-requestIdleCallback" class="headerlink" title="window.requestIdleCallback()"></a>window.requestIdleCallback()</h3><p>window.requestIdleCallback() 会在浏览器空闲时期依次调用函数， 这就可以让开发者在主事件循环中执行后台或低优先级的任务，而且不会对像动画和用户交互这样延迟触发而且关键的事件产生影响。函数一般会按先进先调用的顺序执行，除非函数在浏览器调用它之前就到了它的超时时间。</p>
 <blockquote>
-<p><code>var handle = window.requestIdleCallback(callback[, options])</code><br>返回值<br>一个无符号长整数，可以用它来结束回调，使用 Window.cancelIdleCallback() 方法.</p>
+<p><code>var handle = window.requestIdleCallback(callback[, options])</code></p>
 </blockquote>
+<p>返回值<br>一个无符号长整数，可以用它来结束回调，使用 Window.cancelIdleCallback() 方法.</p>
 <p>参数<br><code>callback</code><br>一个即将被调用的函数的引用。函数会接收到一个名为 deadline 的参数，它具有如下属性 :</p>
 <ul>
 <li><p>timeRemaining： 一个返回 <code>DOMHighResTimeStamp</code> 的函数的引用。(DOMHighResTimeStamp 是一个double类型，用于存储时间值。该值可以是离散的时间点或两个离散时间点之间的时间差。T单位为毫秒 ms (milliseconds) ，应准确至5微秒 µs )</p>
 </li>
 <li><p>didTimeout： 布尔型，如果 callback 在空闲时间被客户端执行，它的值为 false，其他情况它的值为 true (例如：options 中给了超时时间，二期在超时过期时仍没有足够的空闲时间)。</p>
 </li>
-<li><p>options 可选<br>包括可选的配置参数。具有如下属性：<br>timeout：浏览器调用 callback 的最后期限。它的单位是毫秒。</p>
+<li><p>options 可选</p>
 </li>
 </ul>
+<p>包括可选的配置参数。具有如下属性：<br>timeout：浏览器调用 callback 的最后期限。它的单位是毫秒。</p>
 <h3 id="AMD-CMD"><a href="#AMD-CMD" class="headerlink" title="AMD CMD"></a>AMD CMD</h3><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。类似的还有 CommonJS Modules/2.0 规范，是 BravoJS 在推广过程中对模块定义的规范化产出。还有不少⋯⋯</p>
 <p>这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的。目前这些规范的实现都能达成浏览器端模块化开发的目的。</p>
 <p>区别：</p>
@@ -558,8 +560,10 @@
 <li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.</li>
 <li>CMD 推崇依赖就近，AMD 推崇依赖前置。看代码：</li>
 </ol>
-<p>CMD<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123; </span><br><span class="line">    var a = require(&apos;./a&apos;)  </span><br><span class="line">    a.doSomething()  </span><br><span class="line">    // 此处略去 100 行  </span><br><span class="line">    var b = require(&apos;./b&apos;) // 依赖可以就近书写  </span><br><span class="line">     b.doSomething()   </span><br><span class="line">     // ...</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>AMD 默认推荐的是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([&apos;./a&apos;, &apos;./b&apos;], function(a, b) &#123;  // 依赖必须一开始就写好  </span><br><span class="line">    a.doSomething()   </span><br><span class="line">    // 此处略去 100 行  </span><br><span class="line">    b.doSomething()    </span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>CMD</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>)  </span><br><span class="line">    a.doSomething()  </span><br><span class="line">    <span class="comment">// 此处略去 100 行  </span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>) <span class="comment">// 依赖可以就近书写  </span></span><br><span class="line">     b.doSomething()</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+<p>AMD 默认推荐的是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;  <span class="comment">// 依赖必须一开始就写好  </span></span><br><span class="line">    a.doSomething()</span><br><span class="line">    <span class="comment">// 此处略去 100 行  </span></span><br><span class="line">    b.doSomething()</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写法。</p>
 <ol start="3">
 <li>AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。</li>
@@ -587,7 +591,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/javascript/" rel="tag"># -javascript</a>
+            <a href="/hexo/tags/Javascript/" rel="tag"># Javascript</a>
           
         </div>
       
@@ -600,8 +604,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hexo/2018/06/02/leetcode_contest43/" rel="next" title="LeetCode Contest 43">
-                <i class="fa fa-chevron-left"></i> LeetCode Contest 43
+              <a href="/hexo/2018/05/26/http-code/" rel="next" title="http状态码">
+                <i class="fa fa-chevron-left"></i> http状态码
               </a>
             
           </div>
@@ -711,8 +715,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -774,7 +776,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -824,7 +828,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#w3c-制定的-javascript-标准事件模型"><span class="nav-number">1.</span> <span class="nav-text">w3c 制定的 javascript 标准事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发顺序"><span class="nav-number">1.1.</span> <span class="nav-text">触发顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定方法："><span class="nav-number">1.2.</span> <span class="nav-text">绑定方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片服务器几个原因："><span class="nav-number">1.3.</span> <span class="nav-text">图片服务器几个原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何时应该使用etag-何时应该使用last-modified"><span class="nav-number">2.</span> <span class="nav-text">何时应该使用etag? 何时应该使用last-modified?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Modified-Etag-Expire-混合"><span class="nav-number">3.</span> <span class="nav-text">Last-Modified,Etag,Expire 混合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#addEventListener-的-useCaptrue"><span class="nav-number">3.1.</span> <span class="nav-text">addEventListener 的 useCaptrue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件类型"><span class="nav-number">3.2.</span> <span class="nav-text">事件类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-javascript-中，用于阻止默认事件的默认操作的方法是"><span class="nav-number">4.</span> <span class="nav-text">在 javascript 中，用于阻止默认事件的默认操作的方法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的应用"><span class="nav-number">5.</span> <span class="nav-text">闭包的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象、活动对象"><span class="nav-number">6.</span> <span class="nav-text">变量对象、活动对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router原理"><span class="nav-number">7.</span> <span class="nav-text">react-router原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">8.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-数据类型"><span class="nav-number">9.</span> <span class="nav-text">JavaScript 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-worker"><span class="nav-number">10.</span> <span class="nav-text">web worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少重绘（repaint）和重排（reflow）-网页性能优化"><span class="nav-number">11.</span> <span class="nav-text">减少重绘（repaint）和重排（reflow） [网页性能优化]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">11.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数Edit"><span class="nav-number">11.2.</span> <span class="nav-text">参数Edit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-requestIdleCallback"><span class="nav-number">12.</span> <span class="nav-text">window.requestIdleCallback()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-CMD"><span class="nav-number">13.</span> <span class="nav-text">AMD CMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化：提高函数复用，绑定固定参数"><span class="nav-number">14.</span> <span class="nav-text">柯里化：提高函数复用，绑定固定参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#w3c-制定的-javascript-标准事件模型"><span class="nav-number">1.</span> <span class="nav-text">w3c 制定的 javascript 标准事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发顺序"><span class="nav-number">1.1.</span> <span class="nav-text">触发顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定方法："><span class="nav-number">1.2.</span> <span class="nav-text">绑定方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片服务器几个原因："><span class="nav-number">1.3.</span> <span class="nav-text">图片服务器几个原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何时应该使用etag-何时应该使用last-modified"><span class="nav-number">2.</span> <span class="nav-text">何时应该使用etag? 何时应该使用last-modified?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Modified-Etag-Expire-混合"><span class="nav-number">3.</span> <span class="nav-text">Last-Modified,Etag,Expire 混合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#addEventListener-的-useCaptrue"><span class="nav-number">3.1.</span> <span class="nav-text">addEventListener 的 useCaptrue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件类型"><span class="nav-number">3.2.</span> <span class="nav-text">事件类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-javascript-中，用于阻止默认事件的默认操作的方法是"><span class="nav-number">4.</span> <span class="nav-text">在 javascript 中，用于阻止默认事件的默认操作的方法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的应用"><span class="nav-number">5.</span> <span class="nav-text">闭包的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象、活动对象"><span class="nav-number">6.</span> <span class="nav-text">变量对象、活动对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router原理"><span class="nav-number">7.</span> <span class="nav-text">react-router原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">8.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-数据类型"><span class="nav-number">9.</span> <span class="nav-text">JavaScript 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-worker"><span class="nav-number">10.</span> <span class="nav-text">web worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少重绘（repaint）和重排（reflow）-网页性能优化"><span class="nav-number">11.</span> <span class="nav-text">减少重绘（repaint）和重排（reflow） [网页性能优化]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-requestAnimationFrame-方法"><span class="nav-number">12.</span> <span class="nav-text">window.requestAnimationFrame() 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">12.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数Edit"><span class="nav-number">12.2.</span> <span class="nav-text">参数Edit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-requestIdleCallback"><span class="nav-number">13.</span> <span class="nav-text">window.requestIdleCallback()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-CMD"><span class="nav-number">14.</span> <span class="nav-text">AMD CMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化：提高函数复用，绑定固定参数"><span class="nav-number">15.</span> <span class="nav-text">柯里化：提高函数复用，绑定固定参数</span></a></li></ol></div>
             
 
           </div>
@@ -844,7 +848,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -915,6 +919,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -938,6 +945,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

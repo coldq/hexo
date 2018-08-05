@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="React diff　算法React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，这让我们可以无需担心性能问题而”毫无顾忌”的随时“刷新”整个页面，由虚拟DOM来确保只对界面上真正变化的部分进行实际的DOM操作。 什么是DOM Diff算法Web界面由DOM树来构成，当其中某一部分发生变化时，其实就是对应的某个DOM节点发生了变化。在">
-<meta name="keywords" content="-React -diff">
+<meta name="keywords" content="React,diff">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React diff　算法">
 <meta property="og:url" content="https://coldq.github.io/hexo/2018/07/01/React-diff/index.html">
@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/5-1-4.png">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/5-1-5.png">
 <meta property="og:image" content="http://o9qr6mev3.bkt.clouddn.com/5-1-6.png">
-<meta property="og:updated_time" content="2018-07-25T12:54:34.860Z">
+<meta property="og:updated_time" content="2018-07-26T01:27:30.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React diff　算法">
 <meta name="twitter:description" content="React diff　算法React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，这让我们可以无需担心性能问题而”毫无顾忌”的随时“刷新”整个页面，由虚拟DOM来确保只对界面上真正变化的部分进行实际的DOM操作。 什么是DOM Diff算法Web界面由DOM树来构成，当其中某一部分发生变化时，其实就是对应的某个DOM节点发生了变化。在">
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:54:34" itemprop="dateModified" datetime="2018-07-25T20:54:34+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:27:30" itemprop="dateModified" datetime="2018-07-26T09:27:30+08:00">2018-07-26</time>
               
             
           </span>
@@ -505,7 +505,7 @@
 <li><p>节点类型相同，但是属性不同。<br>React会对属性进行重设从而实现节点的转换。</p>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.props.first) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"first"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>A Span<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"second"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>A Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.props.first) &#123;</span><br><span class="line">      <span class="keyword">return</span> &lt;div className="first"&gt;&lt;span&gt;A Span&lt;/span&gt;&lt;/div&gt;;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &lt;div className="second"&gt;&lt;p&gt;A Paragraph&lt;/p&gt;&lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>比如, 当我们挂载了 <code>&lt;MyComponent first={true} /&gt;</code><br>, 然后用 <code>&lt;MyComponent first={false} /&gt;</code> 替换, 然后又取消挂载,这样一个过程的 DOM 的指令是这样的:</p>
 <ul>
 <li><p>从没有到第一步<br>创建节点: <code>&lt;div className=&quot;first&quot;&gt;&lt;span&gt;A Span&lt;/span&gt;&lt;/div&gt;</code></p>
@@ -553,7 +553,9 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/React-diff/" rel="tag"># -React -diff</a>
+            <a href="/hexo/tags/React/" rel="tag"># React</a>
+          
+            <a href="/hexo/tags/diff/" rel="tag"># diff</a>
           
         </div>
       
@@ -677,8 +679,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -740,7 +740,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -810,7 +812,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -881,6 +883,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -904,6 +909,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="applyapply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。 注意：call()方法的作用和 apply() 方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组。 语法1fun.apply(thisArg, [argsArray]) 参数thisArg在 fun 函">
-<meta name="keywords" content="javascript,apply">
+<meta name="keywords" content="Javascript,apply">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中apply">
 <meta property="og:url" content="https://coldq.github.io/hexo/2017/03/20/apply/index.html">
 <meta property="og:site_name" content="ColdQ的个人博客">
 <meta property="og:description" content="applyapply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。 注意：call()方法的作用和 apply() 方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组。 语法1fun.apply(thisArg, [argsArray]) 参数thisArg在 fun 函">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-25T10:53:26.231Z">
+<meta property="og:updated_time" content="2018-07-26T01:53:44.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中apply">
 <meta name="twitter:description" content="applyapply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。 注意：call()方法的作用和 apply() 方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组。 语法1fun.apply(thisArg, [argsArray]) 参数thisArg在 fun 函">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 18:53:26" itemprop="dateModified" datetime="2018-07-25T18:53:26+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 09:53:44" itemprop="dateModified" datetime="2018-07-26T09:53:44+08:00">2018-07-26</time>
               
             
           </span>
@@ -417,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -465,12 +465,12 @@
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="使用apply来链接构造器"><a href="#使用apply来链接构造器" class="headerlink" title="使用apply来链接构造器"></a>使用apply来链接构造器</h3><p>你可以使用apply来给一个对象链接构造器，类似于Java. 在接下来的例子中我们会创建一个叫做construct的全局的Function函数,来使你能够在构造器中使用一个类数组对象而非参数列表。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.construct = <span class="function"><span class="keyword">function</span> (<span class="params">aArgs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> oNew = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.prototype);</span><br><span class="line">  <span class="keyword">this</span>.apply(oNew, aArgs);</span><br><span class="line">  <span class="keyword">return</span> oNew;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>注意: 上面使用的Object.create()方法相对来说比较新。另一种可选的方法是使用闭包，请考虑如下替代方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.construct = <span class="function"><span class="keyword">function</span>(<span class="params">aArgs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fConstructor = <span class="keyword">this</span>, fNewConstr = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    fConstructor.apply(<span class="keyword">this</span>, aArgs); </span><br><span class="line">  &#125;;</span><br><span class="line">  fNewConstr.prototype = fConstructor.prototype;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> fNewConstr();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.construct = <span class="function"><span class="keyword">function</span>(<span class="params">aArgs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fConstructor = <span class="keyword">this</span>, fNewConstr = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fConstructor.apply(<span class="keyword">this</span>, aArgs);</span><br><span class="line">  &#125;;</span><br><span class="line">  fNewConstr.prototype = fConstructor.prototype;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> fNewConstr();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>使用案例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyConstructor</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> nProp = <span class="number">0</span>; nProp &lt; <span class="built_in">arguments</span>.length; nProp++) &#123;</span><br><span class="line">        <span class="keyword">this</span>[<span class="string">"property"</span> + nProp] = <span class="built_in">arguments</span>[nProp];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myArray = [<span class="number">4</span>, <span class="string">"Hello world!"</span>, <span class="literal">false</span>];</span><br><span class="line"><span class="keyword">var</span> myInstance = MyConstructor.construct(myArray);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myInstance.property1);                <span class="comment">// logs "Hello world!"</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstance <span class="keyword">instanceof</span> MyConstructor); <span class="comment">// logs "true"</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstance.constructor);              <span class="comment">// logs "MyConstructor"</span></span><br></pre></td></tr></table></figure>
 <p>注意： 这个非native的Function.construct方法无法和一些native构造器（例如Date）一起使用。 在这种情况下你必须使用Function.bind方法（例如，想象有如下一个数组要用在Date构造器中： [2012, 11, 4]；这时你需要这样写： new (Function.prototype.bind.apply(Date, [null].concat([2012, 11, 4])))() – -无论如何这不是最好的实现方式并且也许不该用在任何生产环境中).</p>
 <h3 id="使用apply和内置函数"><a href="#使用apply和内置函数" class="headerlink" title="使用apply和内置函数"></a>使用apply和内置函数</h3><p>聪明的apply用法允许你在某些本来需要写成遍历数组变量的任务中使用内建的函数。在接下里的例子中我们会使用Math.max/Math.min来找出一个数组中的最大/最小值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* min/max number in an array */</span></span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* using Math.min/Math.max apply */</span></span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numbers); <span class="comment">/* This about equal to Math.max(numbers[0], ...) or Math.max(5, 6, ..) */</span></span><br><span class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, numbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* vs. simple loop based algorithm */</span></span><br><span class="line">max = -<span class="literal">Infinity</span>, min = +<span class="literal">Infinity</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (numbers[i] &gt; max)</span><br><span class="line">    max = numbers[i];</span><br><span class="line">  <span class="keyword">if</span> (numbers[i] &lt; min) </span><br><span class="line">    min = numbers[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* min/max number in an array */</span></span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* using Math.min/Math.max apply */</span></span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numbers); <span class="comment">/* This about equal to Math.max(numbers[0], ...) or Math.max(5, 6, ..) */</span></span><br><span class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, numbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* vs. simple loop based algorithm */</span></span><br><span class="line">max = -<span class="literal">Infinity</span>, min = +<span class="literal">Infinity</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (numbers[i] &gt; max)</span><br><span class="line">    max = numbers[i];</span><br><span class="line">  <span class="keyword">if</span> (numbers[i] &lt; min)</span><br><span class="line">    min = numbers[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是当心：如果用上面的方式调用 apply, 你很可能会遇到方法参数个数越界的问题. 当你对一个方法传入非常多的参数 (比如超过1W多个参数) 时, 就非常有可能会导致越界问题, 这个临界值是根据不同的 JavaScript 引擎而定的 (JavaScript 核心中已经做了硬编码  参数个数限制在65536)，因为这个限制(实际上也是任何用到超大栈空间的行为的自然表现)是未指定的. 有些引擎会抛出异常.  更糟糕的是其他引擎会直接限制传入到方法的参数个数，导致参数丢失. (举个例子: 如果某个引擎限制了方法参数最多为4个 [实际真正的参数个数限制当然要高得多了, 这里只是打个比方], 上面的代码中, 真正通过 apply 传到目标方法中的参数为 5, 6, 2, 3, 而不是完整的 numbers 数组.) 如果你的参数数组可能非常大, 那么推荐使用下面这种策略来处理: 将参数数组切块后循环传入目标方法:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">minOfArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> min = <span class="literal">Infinity</span>;</span><br><span class="line">  <span class="keyword">var</span> QUANTUM = <span class="number">32768</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i += QUANTUM) &#123;</span><br><span class="line">    <span class="keyword">var</span> submin = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, arr.slice(i, <span class="built_in">Math</span>.min(i + QUANTUM, len)));</span><br><span class="line">    min = <span class="built_in">Math</span>.min(submin, min);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> min = minOfArray([<span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>]);</span><br></pre></td></tr></table></figure>
 <h3 id="在”monkey-patching”中使用apply"><a href="#在”monkey-patching”中使用apply" class="headerlink" title="在”monkey-patching”中使用apply"></a>在”monkey-patching”中使用apply</h3><p>Apply可以作为monkey-patch一个Firefox或JS库内建函数的最好方式。对于someobject.foo 函数，你可以用一种旁门左道的方式来修改这个函数，像这样：</p>
@@ -494,7 +494,7 @@
       
         <div class="post-tags">
           
-            <a href="/hexo/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/hexo/tags/Javascript/" rel="tag"># Javascript</a>
           
             <a href="/hexo/tags/apply/" rel="tag"># apply</a>
           
@@ -620,8 +620,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -683,7 +681,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -753,7 +753,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -824,6 +824,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -847,6 +850,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 

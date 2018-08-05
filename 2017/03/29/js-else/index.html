@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="ColdQ的个人博客">
 <meta property="og:description" content="Js的小技巧匿名函数 自执行 什么是自执行的匿名函数?  它是指形如这样的函数: (function {// code})();  匿名函数的好处在于：可以减少局部变量，以免污染现有的运行环境;  疑问   为什么(function { code })()可以被执行, 而function { code }()却会报错? 4.分析 (1). 首先, 要清楚两者的区别:(function {// co">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-25T12:22:04.847Z">
+<meta property="og:updated_time" content="2018-07-26T02:33:34.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Js的小技巧">
 <meta name="twitter:description" content="Js的小技巧匿名函数 自执行 什么是自执行的匿名函数?  它是指形如这样的函数: (function {// code})();  匿名函数的好处在于：可以减少局部变量，以免污染现有的运行环境;  疑问   为什么(function { code })()可以被执行, 而function { code }()却会报错? 4.分析 (1). 首先, 要清楚两者的区别:(function {// co">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-25 20:22:04" itemprop="dateModified" datetime="2018-07-25T20:22:04+08:00">2018-07-25</time>
+                <time title="Modified: 2018-07-26 10:33:34" itemprop="dateModified" datetime="2018-07-26T10:33:34+08:00">2018-07-26</time>
               
             
           </span>
@@ -417,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a></span>
 
                 
                 
@@ -467,7 +467,7 @@
 <p>(2). 其次, js”预编译”的特点:<br>js在”预编译”阶段, 会解释函数声明, 但却会忽略表式.</p>
 <p>(3). 当js执行到<code>function() {//code}();</code>时, 由于<code>function() {//code}</code>在”预编译”阶段已经被解释过, js会跳过<code>function(){//code}</code>, 试图去执行();, 故会报错;<br>当js执行到<code>(function {// code})();</code>时, 由于<code>(function {// code})</code>是表达式, js会去对它求解得到返回值, 由于返回值是一 个函数, 故而遇到<code>();</code>时, 便会被执行.</p>
 <p>另外， 函数转换为表达式的方法并不一定要靠分组操作符()，我们还可以用void操作符，~操作符，!操作符,,+,-等一元操作符<br>如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    alert(<span class="string">"另类的匿名函数自执行"</span>); </span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"另类的匿名函数自执行"</span>);</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="判断是否是Array"><a href="#判断是否是Array" class="headerlink" title="判断是否是Array"></a>判断是否是Array</h2><h3 id="instanceof-判断"><a href="#instanceof-判断" class="headerlink" title="instanceof 判断"></a>instanceof 判断</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(ary <span class="keyword">instanceof</span> <span class="built_in">Array</span>)<span class="comment">//true;</span></span><br></pre></td></tr></table></figure>
 <p>从输出的效果来看，还是挺令人满意的，能准确的检测出数据类型是否是数组，不要高兴的太早，大家先想想这个的缺点</p>
@@ -479,7 +479,7 @@
 <h3 id="通用的方法"><a href="#通用的方法" class="headerlink" title="通用的方法"></a>通用的方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o)==<span class="string">'[object Array]'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isArray(ary));</span><br></pre></td></tr></table></figure>
 <h2 id="判断Object是否空"><a href="#判断Object是否空" class="headerlink" title="判断Object是否空"></a>判断Object是否空</h2><p>Object.getOwnPropertyNames(obj)或Object.keys(obj)返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。</p>
 <p>所以可以用下面方法判断obj是否为空：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj).length === <span class="number">0</span> </span><br><span class="line"><span class="built_in">Object</span>.keys(obj).length === <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj).length === <span class="number">0</span></span><br><span class="line"><span class="built_in">Object</span>.keys(obj).length === <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>注意用<code>for i in obj</code>会返回原型链上的属性</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Foo.prototype.a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</span><br><span class="line">foo.b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(foo);<span class="comment">//["b"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> foo)&#123;<span class="built_in">console</span>.log(i)&#125;; <span class="comment">//b a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不过可以用hasOwnProperty()判断是否是自身的属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> foo)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i,foo.hasOwnProperty(i));</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// b true</span></span><br><span class="line"><span class="comment">// a false</span></span><br></pre></td></tr></table></figure>
 <p>其它方法：</p>
@@ -632,8 +632,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -695,7 +693,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -765,7 +765,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -836,6 +836,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -859,6 +862,16 @@
   
   
     <script type="text/javascript" src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo/lib/three/three-waves.min.js"></script>
   
 
 
