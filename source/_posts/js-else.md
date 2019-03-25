@@ -1,11 +1,10 @@
 ---
 title: Js的小技巧
-date: 2017-03-29 13:49:07
-tags: javascript
-categories: javascript
+date: 2017-04-29 13:49:07
+tags: 
+  - JS
+categories: JS
 ---
-
-## Js的小技巧
 
 ### 匿名函数 自执行
 
@@ -32,8 +31,8 @@ js在"预编译"阶段, 会解释函数声明, 但却会忽略表式.
 如：
 
 ```javascript
-!function(){ 
-alert("另类的匿名函数自执行"); 
+!function(){
+    alert("另类的匿名函数自执行");
 }();
 ```
 
@@ -43,7 +42,7 @@ alert("另类的匿名函数自执行");
 
 ```javascript
 var ary = [1,23,4];
-console.log(ary instanceof Array)//true;
+console.log(ary instanceof Array) //true;
 ```
 
 从输出的效果来看，还是挺令人满意的，能准确的检测出数据类型是否是数组，不要高兴的太早，大家先想想这个的缺点

@@ -2,9 +2,9 @@
 title: javascript中this技巧
 date: 2017-03-18 22:52:26
 tags: 
-  - javascript
+  - JS
   - this
-categories: javascript
+categories: JS
 ---
 
 

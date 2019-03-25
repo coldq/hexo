@@ -2,9 +2,9 @@
 title: ES6相关知识记录
 date: 2017-03-28 17:24:22
 tags: 
-  - javascript
+  - JS
   - ES6 
-categories: javascript
+categories: JS
 ---
 
 ## ES6相关知识记录

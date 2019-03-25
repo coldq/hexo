@@ -2,12 +2,10 @@
 title: javascript中call
 date: 2017-03-22 21:03:47
 tags: 
-  - javascript
+  - JS
   - call 
-categories: javascript
+categories: JS
 ---
-
-## call
 
 call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
 

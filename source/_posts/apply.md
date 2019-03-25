@@ -2,12 +2,10 @@
 title: javascript中apply
 date: 2017-03-20 22:24:21
 tags: 
-  - javascript
+  - JS
   - apply 
-categories: javascript
+categories: JS
 ---
-
-## apply
 
 apply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。
 
