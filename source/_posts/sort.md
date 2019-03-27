@@ -6,8 +6,6 @@ tags:
 categories: 算法
 ---
 
-<img src="http://o9qr6mev3.bkt.clouddn.com/sort.jpg" style="width: 80%;height: 100%;" alt="排序" align=center />
-
 以下都是js的简单实现。
 
 ### 排序的稳定性
@@ -36,8 +34,6 @@ function insertSort(arr){
 
 基本思想：挑选一个元素，称为 “基准”（pivot），重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边），这个称为分区（partition）操作。然后对两个分区进行递归。
 
-<img src="http://o9qr6mev3.bkt.clouddn.com/quick.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
- 
 ```js
 function quickSort(arr){
     partition(arr,0,arr.length-1);
@@ -88,9 +84,6 @@ function partition(arr,lo,hi){
 
 思路：每次从剩余 n-i 个数中找出最小的，放到第i位上。不稳定，比如 [5,5,3] 5和3会交换，导致原本在前面的5到了后面。
 
-<img src="http://o9qr6mev3.bkt.clouddn.com/select.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
-
-
 ```js
 function selectSort(arr){
     for(let i = 0; i < arr.length; i++){
@@ -109,9 +102,6 @@ function selectSort(arr){
 ### 4.归并排序
 
 思路：每次把两个排好序的数组归并在一起。
-
-<img src="http://o9qr6mev3.bkt.clouddn.com/merge.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
-
 
 ```js
 function mergeSort(arr){
@@ -138,8 +128,6 @@ function merge(a,b){
 
 基于插入排序的优化排序，按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小，插入排序对于有序的序列效率很高(排好序的数组，插入排序O(N)复杂度)。希尔排序是不稳定的。
 
-<img src="http://o9qr6mev3.bkt.clouddn.com/shell.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
-
 ```js
 function shellSort(arr){
     let d = ~~ (arr.length/2);
@@ -156,11 +144,10 @@ function shellSort(arr){
     }
 }
 ```
+
 ### 6.冒泡排序
 
 思路：两两比较，大的上浮（或者小的），一趟下来最大的数浮到了顶部。如果一次交换都没发生，说明排序完成。
-
-<img src="http://o9qr6mev3.bkt.clouddn.com/bubble.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
 
 ```js
 function bubbleSort(arr){
@@ -178,8 +165,6 @@ function bubbleSort(arr){
 ```
 
 ### 7.堆排序
-
-<img src="http://o9qr6mev3.bkt.clouddn.com/heap.jpg" style="width: 400px;height: 300px" alt="排序" align=center />
 
 思路：堆排序是不稳定的，在性能上稳定O(nlogN),意味着不管是有序无序都会运行这么久，空间O(1)。
 1. 先将初始文件R[1..n]建成一个大根堆，此堆为初始的无序区
@@ -232,7 +217,7 @@ function fix(arr,i,length){
 
     堆排序:7ms
     快速：78ms (此时是快速的最差情况O(N^2))
-    希尔：36ms 
+    希尔：36ms
     归并：106ms
 测试代码：
 

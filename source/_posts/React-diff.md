@@ -35,19 +35,13 @@ React 用了一种简单但是强大的技巧, 达到了接近 O(n) 的复杂度
 
 React 仅仅是尝试把树按照层级分解. 这彻底简化了复杂度,而且也不会失去很多, 因为 Web 应用很少有 component 移动到树的另一个层级去。它们大部分只是在相邻的子节点之间移动。
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-1.png)
-
 React只会对相同颜色方框内的DOM节点进行比较，即同一个父节点下的所有子节点。
 
 当发现节点已经不存在，则该节点及其子节点会被完全删除掉，不会用于进一步的比较。这样只需要对树进行一次遍历，便能完成整个DOM树的比较。
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-2.png)
-
 由此可发现，当出现节点跨层级移动时，并不会出现想象中的移动操作，而是以 A 为根节点的树被整个重新创建，这是一种影响 React 性能的操作，因此 React 官方建议不要进行 DOM 节点跨层级的操作。
 
 > 注意：在开发组件时，保持稳定的 DOM 结构会有助于性能的提升。例如，可以通过 CSS 隐藏或显示节点，而不是真的移除或添加 DOM 节点。
-
-
 
 #### Component
 
@@ -57,12 +51,9 @@ React 是基于组件构建应用的，一个组件可以看做virtual DOM tree�
 
 - 如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点。
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-3.png)
-
 如图，当 component D 改变为 component G 时，即使这两个 component 结构相似，一旦 React 判断 D 和 G 是不同类型的组件，就不会比较二者的结构，而是直接删除 component D，重新创建 component G 以及其子节点。
 
 虽然当两个 component 是不同类型但结构相似时，React diff 会影响性能，但正如 React 官方博客所言：不同类型的 component 是很少存在相似 DOM tree 的机会，因此这种极端因素很难在实现开发过程中造成重大影响的。
-
 
 #### 列表
 
@@ -76,16 +67,9 @@ React 是基于组件构建应用的，一个组件可以看做virtual DOM tree�
 
 列表节点的操作通常包括添加、删除和排序。例如下图，我们需要往B和C直接插入节点F。在React中，我们只告诉React新的界面应该是A-B-F-C-D-E，由Diff算法完成更新界面。
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-4.png)
-
-
 这时如果每个节点都没有唯一的标识，React无法识别每一个节点，那么更新过程会很低效，即，将C更新成F，D更新成C，E更新成D，最后再插入一个E节点。效果如下图所示：
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-5.png)
-
 可以看到，React会逐个对节点进行更新，转换到目标节点。而最后插入新的节点E，涉及到的DOM操作非常多。而如果给每个节点唯一的标识（key），那么React能够找到正确的位置去插入新的节点，入下图所示：
-
-![](http://o9qr6mev3.bkt.clouddn.com/5-1-6.png)
 
 #### 节点的比较
 

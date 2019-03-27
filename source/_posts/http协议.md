@@ -21,8 +21,6 @@ HTTP是一个应用层协议，虽然在2015年已推出HTTP/2版本，并被主
 
 报文中的数据都使用ASCII编码，各个字段的长度是不确定的（除了作为结尾的CRLF外，不允许出现单独的CR或LF字符）。
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-1.png)
-
 ### 请求报文样例
 
 ```
@@ -51,8 +49,6 @@ hl=zh-CN&source=hp&q=domety
 
 所有请求方法名称全为大写，目前有9种：
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-3.png)
-
 备注
 安全性：https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 幂等性：表示的操作至多只会被处理一次，每次调用都将返回第一次调用时的处理结果。
@@ -79,7 +75,6 @@ POST的安全性要比GET的安全性高，具有真正的Security的含义。�
 
 报头域指头部中的Key，且不分大小写。
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-4.png)
 
 上图中cache-control的说明有误，正确的是：
 
@@ -93,8 +88,6 @@ POST的安全性要比GET的安全性高，具有真正的Security的含义。�
 ### 响应报文结构
 
 如所见，响应报文结构与请求报文结构唯一真正的区别在于第一行中用状态信息代替了请求信息。状态行（status line）通过提供一个状态码来说明所请求的资源情况。
-
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-5.png)
 
 ### 响应报文样例
 
@@ -171,8 +164,6 @@ Hello World, this is a very simple HTML document.
 
 报头域指头部中的Key，且不分大小写。
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-6.png)
-
 ### Session和Cookie
 
 说到HTTP，就不得不提Session和Cookie。但严格来说，Session和Cookie并不是http协议的一部分。由于HTTP协议设计原则是无状态的，但是近年来出现了种种需求，其中cookie的作用就是为了解决HTTP协议无状态的缺陷所作出的努力。后来出现的session机制则是又一种在客户端与服务器之间保持状态的解决方案。 具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的，但实际上它还有其他选择。
@@ -185,11 +176,6 @@ Session是可以存储针对于某一个用户的浏览器以及通过其当前�
 (1)第一次访问某个web站点资源时，客户端提交没有带SessionID的请求（请求报文头没有Cookie头域信息）。
 而web服务器会检查是否有SessionID过来，没有则创建SessionID，并根据web程序自身定义在请求哪个资源时添加属于当前会话的信息（也可为空），这个信息列表以SessionID作为标识。然后将SessionID返回给客户端（通过响应报文头的Set-Cookie头域）。
 (2 )客户端再次访问同个web站点时，提交带有SessionID的请求（通过Cookie头域存储SessionID）。由服务端判断session是否失效，如果未失效，可查询属于当前会话的信息列表。如果失效，则创建新的session（产生新的SessionID），而原先的session（包含session带的信息列表）则丢失，无法访问。
-
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-7.png)
-
-![](http://o9qr6mev3.bkt.clouddn.com/4-8-8.png)
-
 
 #### Cookie
 

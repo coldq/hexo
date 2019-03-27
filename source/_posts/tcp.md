@@ -17,8 +17,6 @@ TCP的特点有：
 
 ### TCP头格式
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-7-1.png)
-
 （1）Source Port（源端口号）：数据发起者的端口号，16bit。  
 （2）Destination Port（目的端口号）：数据接收者的端口号，16bit。  
 （3）Sequence Number（顺序号码，Seq）：用于在数据通信中解决网络包乱序（reordering）问题，以保证应用层接收到的数据不会因为网络上的传输问题而乱序（TCP会用这个顺序号码来拼接数据），32bit。  
@@ -44,8 +42,6 @@ TCP的特点有：
 备注：ISN（Inital Sequence Number）：初始化Sequence Number，发生在建立连接时。
 
 ### TCP协议中的三次握手和四次挥手
-
-![](http://o9qr6mev3.bkt.clouddn.com/4-7-2.png)
 
 特别注意
 

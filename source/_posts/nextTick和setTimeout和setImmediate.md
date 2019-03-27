@@ -51,23 +51,17 @@ B();
 C();
 ```
 
-![](http://o9qr6mev3.bkt.clouddn.com/1-12-1.jpg)
-
 ```
 A();
 process.nextTick(B);
 C();
 ```
 
-![](http://o9qr6mev3.bkt.clouddn.com/1-12-2.jpg)
-
 ```
 A();
 setImmediate(B);
 C();
 ```
-
-![](http://o9qr6mev3.bkt.clouddn.com/1-12-3.jpg)
 
 ### 参考
 

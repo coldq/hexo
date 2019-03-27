@@ -6,8 +6,6 @@ tags:
 categories: Network
 ---
 
-![](http://o9qr6mev3.bkt.clouddn.com/4-6-1.jpg)
-
 ### 第7层应用层：
 
 OSI中的最高层。为特定类型的网络应用提供了访问OSI环境的手段,处理网络应用。常见的协议有:HTTP，HTTPS，FTP，TELNET，SSH，SMTP，POP3等。

@@ -47,8 +47,6 @@ boolean shouldComponentUpdate(object nextProps, object nextState)
 
 而且你要注意, 这个函数每次都会被调用, 所以你要确保运行起来花的时间更少,比 React 的做法时间少, 还有比计算 component 需要的时间少,即便重新绘制并不是必要的。
 
-![](http://o9qr6mev3.bkt.clouddn.com/5-6-3.png)
-
 ### 总结
 
 React 消耗性能的模型很简单, 很好理解: 每次调用 setState 会重新计算整个子树。
