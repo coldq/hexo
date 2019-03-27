@@ -1,14 +1,11 @@
 ---
-title: ES6相关知识记录
+title: flutter 简单了解
 date: 2019-3-27 10:47:21
 tags: 
   - Flutter
   - Dart 
 categories: 杂记
 ---
-
-flutter 简单了解
-
 ### What is flutter ?
 
 - [Flutter](https://github.com/flutter/flutter)是Google开发的一套全新的 mobile app SDK
@@ -195,5 +192,3 @@ flutter 简单了解
    ```
 
    ![gif](https://haitao.nos.netease.com/860a39bd-3ccf-4eb5-a7a4-ace0c65fe4b8_1072_820.gif)
-
-   
