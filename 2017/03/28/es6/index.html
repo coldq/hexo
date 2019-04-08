@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/hexo/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/hexo/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/hexo/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexo/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
+<meta name="keywords" content="JS,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6相关知识记录">
+<meta property="og:url" content="https://coldq.github.io/hexo/2017/03/28/es6/index.html">
+<meta property="og:site_name" content="ColdQ的个人博客">
+<meta property="og:description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-28T12:24:55.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6相关知识记录">
+<meta name="twitter:description" content="ES6相关知识记录持续更新… :imp: 展开运算符展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。 123456789101112131415let arr = [2,3,4]console.log([1,...arr,5]);//[1,2,3,4,5]//函数传参function myFunction(x, y, z) &amp;#123">
+
+
+
+
+
+
+  <link rel="canonical" href="https://coldq.github.io/hexo/2017/03/28/es6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ES6相关知识记录 | ColdQ的个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexo/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ColdQ的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">欲说还休，却道天凉好个秋。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexo/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">34</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://coldq.github.io/hexo/hexo/2017/03/28/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ColdQ">
+      <meta itemprop="description" content="悠哉的生活。">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ColdQ的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6相关知识记录
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-03-28 17:24:22" itemprop="dateCreated datePublished" datetime="2017-03-28T17:24:22+08:00">2017-03-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-28 20:24:55" itemprop="dateModified" datetime="2019-03-28T20:24:55+08:00">2019-03-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/hexo/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ES6相关知识记录"><a href="#ES6相关知识记录" class="headerlink" title="ES6相关知识记录"></a>ES6相关知识记录</h2><p>持续更新… :imp:</p>
+<h4 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h4><p>展开运算符（spread）是三个点（…）,可以将数组转为用逗号分隔的参数序列。在数组合并、函数传参，会快捷很多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>,...arr,<span class="number">5</span>]);<span class="comment">//[1,2,3,4,5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//函数传参</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">x, y, z</span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">let</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">myFunction(...args);</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据解构</span></span><br><span class="line"><span class="keyword">let</span> cold = [<span class="string">'autumn'</span>, <span class="string">'winter'</span>];</span><br><span class="line"><span class="keyword">let</span> warm = [<span class="string">'spring'</span>, <span class="string">'summer'</span>];</span><br><span class="line"><span class="comment">// 析构数组</span></span><br><span class="line"><span class="keyword">let</span> otherSeasons, autumn;</span><br><span class="line">[autumn, ...otherSeasons] = cold;</span><br><span class="line">otherSeasons      <span class="comment">// =&gt; ['winter']</span></span><br></pre></td></tr></table></figure>
+<h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>ES6引入了一种新型的字符串字面量语法，我们称之为模板字符串（template strings）。除了使用反撇号字符 ` 代替普通字符串的引号 ‘ 或 “ 外，它们看起来与普通字符串并无二致。在最简单的情况下，它们与普通字符串的表现一致：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">`Ceci n'est pas une chaîne.`</span>;</span><br><span class="line"><span class="keyword">typeof</span> str <span class="comment">//"string"</span></span><br></pre></td></tr></table></figure>
+<p>它为JavaScript提供了简单的字符串插值功能，从此以后，你可以通过一种更加美观、更加方便的方式向字符串中插值了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'Tom'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`my name is <span class="subst">$&#123;name&#125;</span>`</span>);<span class="comment">//my name is Tom</span></span><br></pre></td></tr></table></figure>
+<p>模板字符串的一些细节：</p>
+<ul>
+<li><p>模板占位符中的代码可以是任意JavaScript表达式，所以函数调用、算数运算等这些都可以作为占位符使用，你甚至可以在一个模板字符串中嵌套另一个，我称之为模板套构（template inception）。</p>
+</li>
+<li><p>如果这两个值都不是字符串，可以按照常规将其转换为字符串。例如：如果action是一个对象，将会调用它的.toString()方法将其转换为字符串值。</p>
+</li>
+<li><p>如果你需要在模板字符串中书写反撇号，你必须使用反斜杠将其转义：`\`` 等价于 “`“。</p>
+</li>
+<li><p>同样地，如果你需要在模板字符串中引入字符$和{。无论你要实现什么样的目标，你都需要用反斜杠转义每一个字符：`\$`和`\{`。</p>
+</li>
+</ul>
+<p>与普通字符串不同的是，模板字符串可以多行书写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">`ww</span></span><br><span class="line"><span class="string">ee</span></span><br><span class="line"><span class="string">rr`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//s:</span></span><br><span class="line"><span class="comment">//"ww</span></span><br><span class="line"><span class="comment">//ee</span></span><br><span class="line"><span class="comment">//rr"</span></span><br></pre></td></tr></table></figure>
+<p>模板字符串中所有的空格、新行、缩进，都会原样输出在生成的字符串中。</p>
+<h3 id="ES6定义方式"><a href="#ES6定义方式" class="headerlink" title="ES6定义方式"></a>ES6定义方式</h3><p>ES5有两种声明变量的方法，var命令 和function命令。</p>
+<p>ES6除了以上两种方法外还有：let命令、const命令、import命令、class命令</p>
+<h4 id="var"><a href="#var" class="headerlink" title="var"></a>var</h4><p>ES5中最原始的变量声明，用于声明变量，其实JavaScript是弱类型语言，对数据类型变量要求不太严格，所以不必声明每一个变量的类型（这就是下面说的隐式声明，当然这并不是一个好习惯），在使用变量之前先进行声明是一种好的习惯。</p>
+<h5 id="1-作用域"><a href="#1-作用域" class="headerlink" title="1.作用域"></a>1.作用域</h5><p>使用var声明的变量的作用域是函数作用域（在ES5时代，只有函数作用域和全局作用域两种作用域），在一个函数内用var声明的变量，则只在这个函数内有效。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="2-变量声明提升"><a href="#2-变量声明提升" class="headerlink" title="2.变量声明提升"></a>2.变量声明提升</h5><p>用var声明变量时，只要在一个函数作用域内，无论在什么地方声明变量，都会把变量的声明提升到函数作用域的最前头，所以无论使用变量在变量声明前还是声明后，都不会报错（当然只是声明提前，赋值并没有提前，所以如果使用在声明之前，会输出undefined，但不会报错）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="隐式声明"><a href="#隐式声明" class="headerlink" title="隐式声明"></a>隐式声明</h5><p>当没有声明，直接给变量赋值时，会隐式地给变量声明，此时这个变量作为全局变量存在。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=<span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br></pre></td></tr></table></figure></p>
+<p>当然要注意，隐式声明的话就没有变量声明提前的功能了，所以下面的使用是会报错的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//ReferenceError: a is not defined</span></span><br><span class="line">    a=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="function"><a href="#function" class="headerlink" title="function"></a>function</h4><p>用function声明的是函数对象，作用域与var一样，是函数作用域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'d'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    a();<span class="comment">//'d'</span></span><br><span class="line">&#125;</span><br><span class="line">a();<span class="comment">//ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
+<p>同样，function声明也有变量声明提升，下面是两个特殊的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello1</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(a); <span class="comment">//[Function: a]</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//[Function: a]</span></span><br><span class="line">&#125;</span><br><span class="line">hello1(<span class="string">'test'</span>);   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello2</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(a); <span class="comment">//test</span></span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">3</span>；</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&#125;</span><br><span class="line">hello2(<span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
+<p>这里有涉及到函数中形参的声明，我们可以将以上两个例子看成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello1</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="string">'test；</span></span><br><span class="line"><span class="string">       console.log(a); //[Function: a]</span></span><br><span class="line"><span class="string">    function a()&#123;&#125;</span></span><br><span class="line"><span class="string">    console.log(a);//[Function: a]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">hello1('</span>test<span class="string">');   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function hello2(a)&#123;</span></span><br><span class="line"><span class="string">    var a='</span>test；</span><br><span class="line">       <span class="built_in">console</span>.log(a); <span class="comment">//test</span></span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">3</span>；</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line">&#125;</span><br><span class="line">hello2(<span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
+<p>可以看到函数对象的声明也提前了，但是在形参变量声明之后（形参的变量声明在所有声明之前）。</p>
+<p>当函数对象和普通对象同时声明时，函数对象的声明提前在普通对象之后。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;     </span><br><span class="line">    console.log(a);//[Function: a]</span><br><span class="line">    function a()&#123;&#125;</span><br><span class="line">    var a;</span><br><span class="line">    console.log(a);//[Function: a]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="let"><a href="#let" class="headerlink" title="let"></a>let</h4><p>ES6新增的声明变量的关键字，与var类似。</p>
+<p>当然，与var也有很大区别：</p>
+<h5 id="1-作用域不同"><a href="#1-作用域不同" class="headerlink" title="1.作用域不同"></a>1.作用域不同</h5><p>let声明的变量的作用域是块级作用域（之前的js并没有块级作用域，只有函数作用域和全局作用域），var声明的变量的作用域是函数作用域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  let a = 10;</span><br><span class="line">  var b = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a // ReferenceError: a is not defined.</span><br><span class="line">b // 1</span><br></pre></td></tr></table></figure></p>
+<p>2.不存在变量声明提升</p>
+<p>用var声明变量时，只要在一个函数作用域内，无论在什么地方声明变量，都会把变量的声明提升到函数作用域的最前头，所以无论使用变量在变量声明前还是声明后，都不会报错。而let不一样，与java以及其他语言一样，let声明的变量，在未声明之前变量是不存在的。（js的语法越来越向java靠拢）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(a); // undefined,但是不报错。</span><br><span class="line">console.log(b); // ReferenceError: b is not defined.</span><br><span class="line"></span><br><span class="line">var a = 2;</span><br><span class="line">let b = 2;</span><br></pre></td></tr></table></figure>
+<p>注意：在使用babel时可能会遇到这样的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(b); //undefined</span><br><span class="line">let b = 2;</span><br></pre></td></tr></table></figure>
+<p>babel在翻译es6时，似乎直接将let变为了var，所以运行时也有变量声明提升了，但是在Chrome下运行时是正确的<br>let</p>
+<p>ES6新增的声明变量的关键字，与var类似。</p>
+<p>当然，与var也有很大区别：</p>
+<p>1.作用域不同</p>
+<p>let声明的变量的作用域是块级作用域（之前的js并没有块级作用域，只有函数作用域和全局作用域），var声明的变量的作用域是函数作用域。</p>
+<p>{<br>  let a = 10;<br>  var b = 1;<br>}</p>
+<p>a // ReferenceError: a is not defined.<br>b // 1<br>2.不存在变量声明提升</p>
+<p>用var声明变量时，只要在一个函数作用域内，无论在什么地方声明变量，都会把变量的声明提升到函数作用域的最前头，所以无论使用变量在变量声明前还是声明后，都不会报错。而let不一样，与java以及其他语言一样，let声明的变量，在未声明之前变量是不存在的。（js的语法越来越向java靠拢）</p>
+<p>console.log(a); // undefined,但是不报错。<br>console.log(b); // ReferenceError: b is not defined.</p>
+<p>var a = 2;<br>let b = 2;<br>注意：在使用babel时可能会遇到这样的情况：</p>
+<p>console.log(b); //undefined<br>let b = 2;<br>babel在翻译es6时，似乎直接将let变为了var，所以运行时也有变量声明提升了，但是在Chrome下运行时是正确的。</p>
+<h5 id="3-暂时性死区"><a href="#3-暂时性死区" class="headerlink" title="3.暂时性死区"></a>3.暂时性死区</h5><p>所谓暂时性死区，意思是，在一个块级作用域中，变量唯一存在，一旦在块级作用域中用let声明了一个变量，那么这个变量就唯一属于这个块级作用域，不受外部变量的影响，如下面所示。</p>
+<p>无论在块中的任何地方声明了一个变量，那么在这个块级作用域中，任何使用这个名字的变量都是指这个变量，无论外部是否有其他同名的全局变量。</p>
+<p>暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。</p>
+<p>暂时性死区的意义也是让我们标准化代码，将所有变量的声明放在作用域的最开始。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 123;  </span><br><span class="line">&#123;</span><br><span class="line"> console.log(a);//ReferenceError</span><br><span class="line">  let a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-不允许重复声明"><a href="#4-不允许重复声明" class="headerlink" title="4.不允许重复声明"></a>4.不允许重复声明</h5><p>在相同的作用域内，用let声明变量时，只允许声明一遍。 （var是可以多次声明的）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 正确</span><br><span class="line">function () &#123;</span><br><span class="line">  var a = 10;</span><br><span class="line">  var a = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 报错，Duplicate declaration &quot;a&quot;</span><br><span class="line">function () &#123;</span><br><span class="line">  let a = 10;</span><br><span class="line">  var a = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 报错,Duplicate declaration &quot;a&quot;</span><br><span class="line">function () &#123;</span><br><span class="line">  let a = 10;</span><br><span class="line">  let a = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>ES6采用import来代替node等的require来导入模块。</p>
+<p><code>import {$} from &#39;./jquery.js&#39;</code><br>$对象就是jquery中export暴露的对象。</p>
+<p>import命令接受一个对象（用大括号表示），里面指定要从其他模块导入的变量名。注意：大括号里面的变量名，必须与被导入模块对外接口的名称相同。</p>
+<p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
+<p><code>import { New as $ } from &#39;./jquery.js&#39;;</code><br><strong>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</strong></p>
+<h4 id="class"><a href="#class" class="headerlink" title="class"></a>class</h4><p>ES6引入了类的概念，有了class这个关键字，当然，类只是基于原型的面向对象模式的语法糖，为了方便理解和开发而已，类的实质还是函数对象，类中的方法和对象其实都是挂在对应的函数对象的prototype属性下。</p>
+<p>我们定义一个类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//定义类</span><br><span class="line">class Person &#123;</span><br><span class="line">  constructor(name, age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">  &#125;    </span><br><span class="line">  setSex(_sex) &#123;</span><br><span class="line">        this.sex=_sex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>constructor方法，就是构造方法，也就是ES5时代函数对象的主体，而this关键字则代表实例对象，将上述类改写成ES5格式就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age)&#123;</span><br><span class="line">          this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype. setSex = function (_sex) &#123;</span><br><span class="line">          this.sex=_sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以说，类不算什么新玩意，大多数类的特性都可以通过之前的函数对象与原型来推导。</p>
+<p>1.所有类都有constructor函数，如果没有显式定义，一个空的constructor方法会被默认添加（有点类似java了）。当然所有函数对象都必须有个主体。</p>
+<p>2.生成类的实例对象的写法，与ES5通过构造函数生成对象完全一样，也是使用new命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class B &#123;&#125;</span><br><span class="line">let b = new B();</span><br></pre></td></tr></table></figure></p>
+<p>3.在类的实例上面调用方法，其实就是调用原型上的方法，因为类上的方法其实都是添加在原型上。</p>
+<pre><code>b.constructor === B.prototype.constructor // true
+</code></pre><p>4.与函数对象一样，Class也可以使用表达式的形式定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let Person = class Me &#123;</span><br><span class="line">      getClassName() &#123;</span><br><span class="line">        return Me.name;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>相当于<br>    var Person = function test(){}</p>
+<p>5.Class其实就是一个function，但是有一点不同，Class不存在变量提升，也就是说Class声明定义必须在使用之前。</p>
+<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>全局对象是最顶层的对象，在浏览器环境指的是window对象，在Node.js指的是global对象。</p>
+<p>ES5之中，全局对象的属性与全局变量是等价的，隐式声明或者在全局环境下声明的变量是挂在全局对象上的。</p>
+<p>ES6规定，var命令，function命令以及隐式声明的全局变量，依旧是全局对象的属性；而let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">console.log(window.a) // 1</span><br><span class="line"></span><br><span class="line">let b = 1;</span><br><span class="line">console.log(window.b) // undefined</span><br></pre></td></tr></table></figure>
+<h4 id="函数的形参"><a href="#函数的形参" class="headerlink" title="函数的形参"></a>函数的形参</h4><p>函数的形参，隐藏着在函数一开始声明了这些形参对应的变量。</p>
+<p><code>function a(x,y){}</code></p>
+<p>可以看成  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    var x=arguments.length &lt;= 0 || arguments[0] === undefined ? undefined : arguments[0];</span><br><span class="line">    var y=arguments.length &lt;= 1 || arguments[1] === undefined ? undefined : arguments[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然在ES6下默认声明就是用的let了，所以函数a变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    let x=arguments.length &lt;= 0 || arguments[0] === undefined ? undefined : arguments[0];</span><br><span class="line">    let y=arguments.length &lt;= 1 || arguments[1] === undefined ? undefined : arguments[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以在ES6中会有以下几个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function a(x = y, y = 2) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a(); // 报错，给X赋值时y还未被let声明。</span><br></pre></td></tr></table></figure>
+<p>function a(x，y) {<br>  let x;//相当于重复声明，报错。<br>}</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexo/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/hexo/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo/2017/03/27/fortest/" rel="next" title="知识记录">
+                <i class="fa fa-chevron-left"></i> 知识记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexo/2017/04/13/http-code/" rel="prev" title="Http状态码">
+                Http状态码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/11736231?s=460&v=4" alt="ColdQ">
+            
+              <p class="site-author-name" itemprop="name">ColdQ</p>
+              <div class="site-description motion-element" itemprop="description">悠哉的生活。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/hexo/archives/">
+                
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/hexo/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/hexo/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/coldQ" title="GitHub &rarr; https://github.com/coldQ" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6相关知识记录"><span class="nav-number">1.</span> <span class="nav-text">ES6相关知识记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#展开运算符"><span class="nav-number">1.0.1.</span> <span class="nav-text">展开运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.0.2.</span> <span class="nav-text">模板字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6定义方式"><span class="nav-number">1.1.</span> <span class="nav-text">ES6定义方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#var"><span class="nav-number">1.1.1.</span> <span class="nav-text">var</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-作用域"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.作用域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-变量声明提升"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2.变量声明提升</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#隐式声明"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">隐式声明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function"><span class="nav-number">1.1.2.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#let"><span class="nav-number">1.1.3.</span> <span class="nav-text">let</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-作用域不同"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1.作用域不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-暂时性死区"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">3.暂时性死区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-不允许重复声明"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">4.不允许重复声明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">1.1.4.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class"><span class="nav-number">1.1.5.</span> <span class="nav-text">class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局变量"><span class="nav-number">1.1.6.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的形参"><span class="nav-number">1.1.7.</span> <span class="nav-text">函数的形参</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-ColdQ"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ColdQ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/hexo/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/hexo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/hexo/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/hexo/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/hexo/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/hexo/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/hexo/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/hexo/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexo/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
